@@ -39,10 +39,29 @@ body {
 }
 
 .nav-links a {
+    position: relative;
     color: #fff;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #10B981;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /* General Container */
