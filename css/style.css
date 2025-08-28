@@ -160,8 +160,10 @@ body {
 .logos-slide {
     display: flex;
     gap: 40px;
-    animation: scroll 180s linear infinite;
+    --scroll-duration: 180s;
+    animation: scroll var(--scroll-duration) linear infinite;
     will-change: transform;
+    transition: animation-duration 2s ease-out;
 }
 
 .logos img {
