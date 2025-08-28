@@ -146,28 +146,24 @@ body {
 .logos {
     display: flex;
     align-items: center;
-    overflow: hidden;
-    gap: 40px;
     margin-top: 1rem;
-    white-space: nowrap;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, hsl(0 0% 0% / 0), hsl(0 0% 0% / 1) 20%, hsl(0 0% 0% / 1) 80%, hsl(0 0% 0% / 0));
 }
 
-.logos:hover {
+.logos:hover .logos-slide {
     animation-play-state: paused;
+}
+
+.logos-slide {
+    display: flex;
+    gap: 40px;
+    animation: scroll 40s linear infinite;
 }
 
 .logos img {
     height: 50px;
-    filter: grayscale(100%);
-    opacity: 0.6;
     transition: all 0.3s ease;
-    animation: scroll 40s linear infinite;
-}
-
-.logos img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    animation-play-state: paused;
 }
 
 @keyframes scroll {
@@ -175,7 +171,7 @@ body {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-100%);
+        transform: translateX(calc(-100% - 40px));
     }
 }
 
