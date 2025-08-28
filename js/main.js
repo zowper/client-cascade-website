@@ -1,10 +1,10 @@
 // JavaScript for the Client Cascade website.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Fade-in elements logic
     const fadeInElements = document.querySelectorAll('.fade-in-element');
-
     if (fadeInElements.length > 0) {
-        const observer = new IntersectionObserver((entries, observer) => {
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
@@ -16,7 +16,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         fadeInElements.forEach(element => {
-            observer.observe(element);
+            fadeInObserver.observe(element);
         });
+    }
+
+    // Client logo slider logic
+    const logosContainer = document.querySelector('.logos');
+    if (logosContainer) {
+        const logoObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadLogos();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        logoObserver.observe(logosContainer);
+    }
+
+    function loadLogos() {
+        const logoFilenames = [
+            'AquaDuct.png', 'ClearViewCleaners.png', 'DrivewayDoctors.png', 'DurableRoofing.png',
+            'ElevationBuilders.png', 'EverflowGutters.png', 'FlowRightGutters.png', 'GreenScape.png',
+            'GreenScapes.png', 'GutterGuys.png', 'HorizonContracting.png', 'KeystoneContracting.png',
+            'Lumina.png', 'NaturesEdge.png', 'OneWayExteriors.png', 'PaveSafe.png',
+            'PinnacleExteriors.png', 'PipeDreamsPlumbing.png', 'PrecisionGutters.png', 'Prism.png',
+            'ProFlow.png', 'RainFlowSystems.png', 'ReliableRoofing.png', 'SummitRoofers.png',
+            'TerraformLandscaping.png', 'TheGutterButler.png', 'TheGutterPros.png', 'VertexHomes.png'
+        ];
+
+        shuffleArray(logoFilenames);
+
+        // Duplicate logos for seamless scrolling
+        const allLogos = [...logoFilenames, ...logoFilenames];
+
+        allLogos.forEach(filename => {
+            const img = document.createElement('img');
+            img.src = `images/client-logos/${filename}`;
+            img.alt = filename.split('.')[0];
+            logosContainer.appendChild(img);
+        });
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
 });
