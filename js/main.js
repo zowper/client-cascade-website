@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadLogos() {
-        const logoFilenames = [
+        // Use a Set to ensure the list of logos is unique.
+        const logoFilenames = [...new Set([
             'AquaDuct.png', 'ClearViewCleaners.png', 'DrivewayDoctors.png', 'DurableRoofing.png',
             'ElevationBuilders.png', 'EverflowGutters.png', 'FlowRightGutters.png', 'GreenScape.png',
             'GreenScapes.png', 'GutterGuys.png', 'HorizonContracting.png', 'KeystoneContracting.png',
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'PinnacleExteriors.png', 'PipeDreamsPlumbing.png', 'PrecisionGutters.png', 'Prism.png',
             'ProFlow.png', 'RainFlowSystems.png', 'ReliableRoofing.png', 'SummitRoofers.png',
             'TerraformLandscaping.png', 'TheGutterButler.png', 'TheGutterPros.png', 'VertexHomes.png'
-        ];
+        ])];
 
         shuffleArray(logoFilenames);
 
@@ -64,24 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const slide = document.createElement('div');
         slide.classList.add('logos-slide');
-        logosContainer.appendChild(slide);
 
+        // Create a document fragment to append images in the correct order, avoiding race conditions.
+        const fragment = document.createDocumentFragment();
         allLogos.forEach(filename => {
-            const img = new Image();
+            const img = document.createElement('img');
             img.src = `images/client-logos/${filename}`;
             img.alt = filename.split('.')[0];
-            img.onload = () => {
-                slide.appendChild(img);
-            };
+            fragment.appendChild(img);
         });
 
-        // Set initial fast animation speed
-        slide.style.setProperty('--scroll-duration', '40s');
+        slide.appendChild(fragment);
+        logosContainer.appendChild(slide);
 
-        // After a delay, transition to the slower speed
-        setTimeout(() => {
-            slide.style.setProperty('--scroll-duration', '180s');
-        }, 4000); // 4 seconds
+        // Set a single, consistent animation speed.
+        slide.style.setProperty('--scroll-duration', '180s');
     }
 
     function shuffleArray(array) {
