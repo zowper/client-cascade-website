@@ -54,14 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const slide = document.createElement('div');
         slide.classList.add('logos-slide');
 
-        allLogos.forEach(filename => {
-            const img = document.createElement('img');
-            img.src = `images/client-logos/${filename}`;
-            img.alt = filename.split('.')[0];
-            img.loading = "lazy";
-            slide.appendChild(img);
+        const imagePromises = allLogos.map(filename => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = `images/client-logos/${filename}`;
+                img.alt = filename.split('.')[0];
+                img.onload = () => resolve(img);
+                img.onerror = () => reject(`Failed to load image: ${filename}`);
+            });
         });
-        logosContainer.appendChild(slide);
+
+        Promise.all(imagePromises)
+            .then(images => {
+                images.forEach(img => {
+                    slide.appendChild(img);
+                });
+                logosContainer.appendChild(slide);
+            })
+            .catch(error => {
+                console.error("Error pre-loading images:", error);
+            });
     }
 
     function shuffleArray(array) {
