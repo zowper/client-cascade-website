@@ -1,6 +1,17 @@
 // JavaScript for the Client Cascade website.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger menu logic
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburgerMenu && navLinks) {
+        hamburgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
+        });
+    }
+
     // Fade-in elements logic
     const fadeInElements = document.querySelectorAll('.fade-in-element');
     if (fadeInElements.length > 0) {
