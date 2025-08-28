@@ -51,12 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Duplicate logos for seamless scrolling
         const allLogos = [...logoFilenames, ...logoFilenames];
 
+        const slide = document.createElement('div');
+        slide.classList.add('logos-slide');
+
         allLogos.forEach(filename => {
             const img = document.createElement('img');
             img.src = `images/client-logos/${filename}`;
             img.alt = filename.split('.')[0];
-            logosContainer.appendChild(img);
+            slide.appendChild(img);
         });
+        logosContainer.appendChild(slide);
     }
 
     function shuffleArray(array) {
