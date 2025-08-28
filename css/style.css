@@ -159,6 +159,7 @@ body {
     display: flex;
     gap: 40px;
     animation: scroll 120s linear infinite;
+    will-change: transform;
 }
 
 .logos img {
