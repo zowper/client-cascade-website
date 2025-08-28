@@ -145,10 +145,15 @@ body {
 
 .logos {
     display: flex;
-    justify-content: center;
     align-items: center;
+    overflow: hidden;
     gap: 40px;
     margin-top: 1rem;
+    white-space: nowrap;
+}
+
+.logos:hover {
+    animation-play-state: paused;
 }
 
 .logos img {
@@ -156,11 +161,22 @@ body {
     filter: grayscale(100%);
     opacity: 0.6;
     transition: all 0.3s ease;
+    animation: scroll 40s linear infinite;
 }
 
 .logos img:hover {
     filter: grayscale(0%);
     opacity: 1;
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 /* Testimonials Section */
