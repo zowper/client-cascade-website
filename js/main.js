@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = `images/client-logos/${filename}`;
             img.alt = filename.split('.')[0];
+            img.loading = "lazy";
             slide.appendChild(img);
         });
         logosContainer.appendChild(slide);
