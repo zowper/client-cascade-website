@@ -10,9 +10,9 @@ body {
 
 /* Header and Navigation */
 .navbar {
-    background: #333;
-    color: #fff;
+    background: #fff;
     padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar .container {
@@ -22,7 +22,6 @@ body {
 }
 
 .navbar .logo {
-    color: #fff;
     text-decoration: none;
 }
 
@@ -43,9 +42,9 @@ body {
 
 .nav-links a {
     position: relative;
-    color: #fff;
+    color: #374151;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
