@@ -53,27 +53,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const slide = document.createElement('div');
         slide.classList.add('logos-slide');
+        logosContainer.appendChild(slide);
 
-        const imagePromises = allLogos.map(filename => {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.src = `images/client-logos/${filename}`;
-                img.alt = filename.split('.')[0];
-                img.onload = () => resolve(img);
-                img.onerror = () => reject(`Failed to load image: ${filename}`);
-            });
+        allLogos.forEach(filename => {
+            const img = new Image();
+            img.src = `images/client-logos/${filename}`;
+            img.alt = filename.split('.')[0];
+            img.onload = () => {
+                slide.appendChild(img);
+            };
         });
 
-        Promise.all(imagePromises)
-            .then(images => {
-                images.forEach(img => {
-                    slide.appendChild(img);
-                });
-                logosContainer.appendChild(slide);
-            })
-            .catch(error => {
-                console.error("Error pre-loading images:", error);
-            });
+        // Set initial fast animation speed
+        slide.style.setProperty('--scroll-duration', '40s');
+
+        // After a delay, transition to the slower speed
+        setTimeout(() => {
+            slide.style.setProperty('--scroll-duration', '180s');
+        }, 4000); // 4 seconds
     }
 
     function shuffleArray(array) {
