@@ -6,6 +6,7 @@
     <title>Client Cascade</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
     <header>
@@ -65,98 +66,55 @@
                 </div>
             </div>
         </section>
-        <section class="testimonials">
+        <section class="testimonials-new fade-in-element">
             <div class="container">
-                <h2>What our customers are saying</h2>
-                <div class="testimonial-container">
-                    <div class="testimonial-slider">
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>James D. (Gutters)</cite>
+                <h2 class="text-center">What our customers are saying</h2>
+                <div class="animated-testimonial-container">
+                    <div class="testimonial-images">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="James D." class="testimonial-img">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80" alt="Shane P." class="testimonial-img">
+                        <img src="https://images.unsplash.com/photo-1623582854588-d60de57fa33f" alt="John D." class="testimonial-img">
+                        <img src="https://images.unsplash.com/photo-1636041293178-808a6762ab39" alt="Michael P." class="testimonial-img">
+                        <img src="https://images.unsplash.com/photo-1624561172888-ac93c696e10c" alt="Robert B." class="testimonial-img">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-quote-container">
+                            <div class="testimonial-quote">
                                 <div class="stars">★★★★★</div>
+                                <p>"Client Cascade has been a game-changer for our business. We've doubled our leads in the first three months!"</p>
+                                <h3>James D.</h3>
+                                <p class="designation">(Gutters)</p>
                             </div>
-                            <p>"Client Cascade has been a game-changer for our business. We've doubled our leads in the first three months!"</p>
+                            <div class="testimonial-quote">
+                                <div class="stars">★★★★★</div>
+                                <p>"The all-in-one platform has saved us so much time and money. No more duct-taping different tools together."</p>
+                                <h3>Shane P.</h3>
+                                <p class="designation">(HVAC)</p>
+                            </div>
+                            <div class="testimonial-quote">
+                                <div class="stars">★★★★★</div>
+                                <p>"Since we started using Client Cascade, our lead volume has more than doubled. It's a game-changer for our bottom line."</p>
+                                <h3>John D.</h3>
+                                <p class="designation">(Gutters)</p>
+                            </div>
+                            <div class="testimonial-quote">
+                                <div class="stars">★★★★★</div>
+                                <p>"I love how I can see where every lead is in my pipeline. It saves me so much time and makes sure nothing falls through the cracks."</p>
+                                <h3>Michael P.</h3>
+                                <p class="designation">(Siding Contractor)</p>
+                            </div>
+                            <div class="testimonial-quote">
+                                <div class="stars">★★★★★</div>
+                                <p>"The leads we get from Client Cascade are actually serious buyers. We're not wasting time chasing dead ends anymore."</p>
+                                <h3>Robert B.</h3>
+                                <p class="designation">(Roofing)</p>
+                            </div>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Shane P. (HVAC)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"The all-in-one platform has saved us so much time and money. No more duct-taping different tools together."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>John D. (Gutters)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"Since we started using Client Cascade, our lead volume has more than doubled. It's a game-changer for our bottom line."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Michael P. (Siding Contractor)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"I love how I can see where every lead is in my pipeline. It saves me so much time and makes sure nothing falls through the cracks."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Robert B. (Roofing)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"The leads we get from Client Cascade are actually serious buyers. We're not wasting time chasing dead ends anymore."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>David L. (Landscaping)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"We used to rely on word-of-mouth. Now, thanks to Client Cascade, we have a steady stream of new customers without lifting a finger."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Emily C. (Gutters)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"I'm not the most tech-savvy person, but Client Cascade is incredibly intuitive. I was up and running in a day and started seeing results immediately."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Maria G. (Roofing)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"Client Cascade is a constant source of high-quality leads. Our sales team is busier than ever, and we're seeing our revenue climb steadily."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Carlos R. (Gutters)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"Client Cascade connects us with people who are ready to hire. The conversion rate is incredible."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Daniel F. (Cleaning)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"Simple, effective, and powerful. That's how I'd describe Client Cascade. It's exactly what my business needed."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>Jessica A. (Pest Control)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"This platform has completely streamlined our process. From the first contact to the final invoice, it's all seamless and organized."</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <cite>John M. (Concrete)</cite>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <p>"Before Client Cascade, our leads were all over the place. Now, everything is in one dashboard. It's so easy to follow up and we've closed more deals."</p>
+                        <div class="testimonial-nav">
+                            <button class="prev-btn">&larr;</button>
+                            <button class="next-btn">&rarr;</button>
                         </div>
                     </div>
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
                 </div>
             </div>
         </section>
