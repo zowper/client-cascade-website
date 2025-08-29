@@ -88,4 +88,60 @@ document.addEventListener('DOMContentLoaded', () => {
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
+
+    // Testimonial slider logic
+    const slider = document.querySelector('.testimonial-slider');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    function showTestimonial(index) {
+        if (slider && cards.length > 0) {
+            const cardWidth = cards[0].offsetWidth;
+            const newTransform = -index * cardWidth;
+            slider.style.transform = `translateX(${newTransform}px)`;
+        }
+    }
+
+    function nextTestimonial() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        showTestimonial(currentIndex);
+    }
+
+    function prevTestimonial() {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        showTestimonial(currentIndex);
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextTestimonial, 5000); // Change slide every 5 seconds
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    if (nextBtn && prevBtn && slider) {
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            stopAutoSlide();
+            startAutoSlide(); // Restart auto-slide on manual navigation
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            stopAutoSlide();
+            startAutoSlide(); // Restart auto-slide on manual navigation
+        });
+
+        // Pause auto-slide on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        // Initialize
+        showTestimonial(currentIndex);
+        startAutoSlide();
+    }
 });
