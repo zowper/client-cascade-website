@@ -183,20 +183,80 @@ body {
 /* Testimonials Section */
 .testimonials {
     padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.testimonial {
+.testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
     background: #fff;
     padding: 2rem;
-    border-radius: 5px;
+    border-radius: 8px;
+    flex: 0 0 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
-.testimonial cite {
-    display: block;
-    margin-top: 1rem;
+.testimonial-card cite {
     font-style: normal;
+    font-weight: 600;
+    color: #374151;
+}
+
+.stars {
+    color: #FBBF24;
+    font-size: 1.25rem;
+}
+
+.testimonial-card p {
+    color: #4B5563;
+    line-height: 1.6;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
     font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
 }
 
 /* Benefits Page */
