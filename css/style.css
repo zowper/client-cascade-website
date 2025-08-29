@@ -76,7 +76,7 @@ body {
 /* Hero Section */
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/design/CascadeBackdropCompressed.jpg');
-    background-color: #333;
+    background-color: #222;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
