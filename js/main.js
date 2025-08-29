@@ -34,16 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Client logo slider logic
     const logosContainer = document.querySelector('.logos');
     if (logosContainer) {
-        const logoObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    loadLogos();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        logoObserver.observe(logosContainer);
+        loadLogos();
     }
 
     function loadLogos() {
