@@ -89,59 +89,72 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Testimonial slider logic
-    const slider = document.querySelector('.testimonial-slider');
-    const cards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    let currentIndex = 0;
-    let autoSlideInterval;
+    // Animated Testimonials Logic
+    const testimonialContainer = document.querySelector('.animated-testimonial-container');
+    if (testimonialContainer) {
+        const images = document.querySelectorAll('.testimonial-img');
+        const quotes = document.querySelectorAll('.testimonial-quote');
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        let currentIndex = 0;
+        let interval;
 
-    function showTestimonial(index) {
-        if (slider && cards.length > 0) {
-            const cardWidth = cards[0].offsetWidth;
-            const newTransform = -index * cardWidth;
-            slider.style.transform = `translateX(${newTransform}px)`;
+        function showTestimonial(index) {
+            quotes.forEach((quote, i) => {
+                if (i === index) {
+                    gsap.to(quote, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
+                    quote.classList.add('active');
+                } else {
+                    gsap.to(quote, { opacity: 0, y: 20, duration: 0.5, ease: 'power3.in' });
+                    quote.classList.remove('active');
+                }
+            });
+
+            images.forEach((img, i) => {
+                const zIndex = images.length - Math.abs(index - i);
+                gsap.to(img, {
+                    y: (i - index) * 20,
+                    scale: i === index ? 1 : 0.9,
+                    opacity: i === index ? 1 : 0.7,
+                    rotation: i === index ? 0 : (Math.random() * 10 - 5),
+                    zIndex: zIndex,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+            });
         }
-    }
 
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % cards.length;
-        showTestimonial(currentIndex);
-    }
+        function next() {
+            currentIndex = (currentIndex + 1) % quotes.length;
+            showTestimonial(currentIndex);
+        }
 
-    function prevTestimonial() {
-        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-        showTestimonial(currentIndex);
-    }
+        function prev() {
+            currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+            showTestimonial(currentIndex);
+        }
 
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextTestimonial, 5000); // Change slide every 5 seconds
-    }
+        function startAutoplay() {
+            interval = setInterval(next, 5000);
+        }
 
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
+        function stopAutoplay() {
+            clearInterval(interval);
+        }
 
-    if (nextBtn && prevBtn && slider) {
         nextBtn.addEventListener('click', () => {
-            nextTestimonial();
-            stopAutoSlide();
-            startAutoSlide(); // Restart auto-slide on manual navigation
+            stopAutoplay();
+            next();
+            startAutoplay();
         });
-
         prevBtn.addEventListener('click', () => {
-            prevTestimonial();
-            stopAutoSlide();
-            startAutoSlide(); // Restart auto-slide on manual navigation
+            stopAutoplay();
+            prev();
+            startAutoplay();
         });
 
-        // Pause auto-slide on hover
-        slider.addEventListener('mouseenter', stopAutoSlide);
-        slider.addEventListener('mouseleave', startAutoSlide);
-
-        // Initialize
-        showTestimonial(currentIndex);
-        startAutoSlide();
+        // Initial setup
+        showTestimonial(0);
+        startAutoplay();
     }
 });
