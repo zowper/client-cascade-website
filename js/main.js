@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fragment = document.createDocumentFragment();
         allLogos.forEach(filename => {
             const img = document.createElement('img');
-            img.src = `images/client-logos/${filename}`;
+            img.src = `images/client-logos-optimized/${filename}`;
             img.alt = filename.split('.')[0];
             fragment.appendChild(img);
         });
@@ -91,6 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let interval;
 
         function showTestimonial(index) {
+            // Lazy load the image if it hasn't been loaded yet.
+            const image = images[index];
+            if (image.dataset.src) {
+                image.src = image.dataset.src;
+                delete image.dataset.src; // Remove the data-src attribute once the image is loaded.
+            }
+
             quotes.forEach((quote, i) => {
                 if (i === index) {
                     gsap.to(quote, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
