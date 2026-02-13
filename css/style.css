@@ -310,7 +310,8 @@ body {
 
 .benefit img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 30px;
+    border: 1px solid black;
 }
 
 /* Pricing Page */
