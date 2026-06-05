@@ -1,6 +1,7 @@
 /* 
    Client Cascade Earlybird Landing Page Script
    Handles interaction, validations, mockups, and entry animations.
+   Linear High-Converting Layout
 */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,50 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 2. INTERACTIVE FEATURE TABS CONSOLE ---
-    const tabButtons = document.querySelectorAll('.console-tab-btn');
-    const panels = document.querySelectorAll('.console-panel');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetTab = button.getAttribute('data-tab');
-
-            // Remove active states
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            panels.forEach(panel => panel.classList.remove('active'));
-
-            // Set active states
-            button.classList.add('active');
-            const activePanel = document.getElementById(`panel-${targetTab}`);
-            if (activePanel) {
-                activePanel.classList.add('active');
-                
-                // Trigger animation check for mockup bars if applicable
-                animateMockupElements(activePanel);
-            }
-        });
-    });
-
-    // Helper to trigger mockup animations when a tab is displayed
-    function animateMockupElements(panel) {
-        const fills = panel.querySelectorAll('.mockup-progress-fill');
-        fills.forEach(fill => {
-            const targetWidth = fill.getAttribute('data-width') || '100%';
-            fill.style.width = '0%';
-            setTimeout(() => {
-                fill.style.width = targetWidth;
-            }, 100);
-        });
-    }
-
-    // Initialize first panel animations
-    const initialPanel = document.querySelector('.console-panel.active');
-    if (initialPanel) {
-        animateMockupElements(initialPanel);
-    }
-
-
-    // --- 3. FORM VALIDATION & SIGNUP INTERACTIONS ---
+    // --- 2. FORM VALIDATION & SIGNUP INTERACTIONS ---
     const heroForm = document.getElementById('hero-earlybird-form');
     const mainForm = document.getElementById('waitlist-main-form');
     const mainEmailInput = document.getElementById('main-email');
@@ -231,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. ANIMATION SCRIPTS (GSAP / CSS OBSERVATION) ---
+    // --- 3. ANIMATION SCRIPTS (GSAP / CSS OBSERVATION) ---
     // Check if GSAP is available
     if (typeof gsap !== 'undefined') {
         // Register ScrollTrigger if available
@@ -259,28 +217,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Why Cascade section elements
-        gsap.from('.why-card', {
+        gsap.from('.why-container > *', {
             scrollTrigger: {
                 trigger: '.why-section',
-                start: 'top 75%'
+                start: 'top 80%'
             },
             opacity: 0,
-            y: 40,
+            y: 30,
             duration: 0.8,
             stagger: 0.15,
             ease: 'power2.out'
         });
 
-        // Interactive Console container
-        gsap.from('.console-container', {
-            scrollTrigger: {
-                trigger: '.features-detailed-section',
-                start: 'top 75%'
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: 'power2.out'
+        // Alternating Linear Feature rows
+        document.querySelectorAll('.feature-row').forEach(row => {
+            gsap.from(row.querySelectorAll('.feature-content > *, .feature-visual'), {
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 75%'
+                },
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power2.out'
+            });
         });
 
         // Bonus cards reveal
@@ -327,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         // Apply transition styling dynamically for fallback
-        const animatedClasses = ['.why-card', '.bonus-card', '.console-container', '.waitlist-form-container'];
+        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container'];
         animatedClasses.forEach(selector => {
             document.querySelectorAll(selector).forEach(el => {
                 el.style.opacity = '0';
