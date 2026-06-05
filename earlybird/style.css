@@ -1198,6 +1198,10 @@ p {
         margin: 0 auto;
     }
 
+    .crm-title {
+        display: none !important;
+    }
+
     .feature-row, .feature-row.reverse {
         grid-template-columns: 1fr;
         gap: 3.5rem;
@@ -1750,9 +1754,9 @@ p {
 }
 
 .leak-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .leak-column {
@@ -1862,10 +1866,7 @@ p {
     .leak-header h2 {
         font-size: 1.8rem;
     }
-    .leak-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+
     .leak-col-header {
         font-size: 1.15rem;
         padding: 0.75rem 1rem;
@@ -2246,64 +2247,6 @@ p {
     border-radius: 16px;
     padding: 1.15rem;
     box-shadow: 0 10px 25px -5px rgba(15,23,42,0.08);
-}
-
-/* --- COMPARISON TOGGLE FOR MOBILE --- */
-.comparison-toggle-container {
-    display: flex;
-    background: rgba(15, 23, 42, 0.05);
-    padding: 0.25rem;
-    border-radius: 12px;
-    width: max-content;
-    margin: 0 auto 2.5rem auto;
-    border: 1px solid rgba(15, 23, 42, 0.05);
-}
-
-.comparison-toggle-btn {
-    background: transparent;
-    border: none;
-    padding: 0.6rem 1.25rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.9rem;
-    border-radius: 9px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    color: var(--text-secondary);
-}
-
-.comparison-toggle-btn.active.red {
-    background: rgba(239, 68, 68, 0.1);
-    color: #dc2626;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-.comparison-toggle-btn.active.green {
-    background: rgba(16, 185, 129, 0.1);
-    color: var(--text-emerald);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-.comparison-columns-wrapper.show-cascade .leak-column.red-side {
-    display: none !important;
-}
-
-.comparison-columns-wrapper.show-cascade .leak-column.green-side {
-    display: flex !important;
-}
-
-.comparison-columns-wrapper.show-old .leak-column.green-side {
-    display: none !important;
-}
-
-.comparison-columns-wrapper.show-old .leak-column.red-side {
-    display: flex !important;
-}
-
-@media (max-width: 768px) {
-    .comparison-columns-wrapper .leak-column {
-        width: 100%;
-    }
 }
 
 
