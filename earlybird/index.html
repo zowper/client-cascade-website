@@ -202,76 +202,6 @@
             </div>
         </section>
 
-        <!-- ROI CALCULATOR SECTION -->
-        <section class="roi-calculator-section">
-            <div class="container roi-calc-container">
-                <div class="roi-calc-header">
-                    <span class="badge">Profit Calculator</span>
-                    <h2>How Much Money Are You Leaving Behind?</h2>
-                    <p>Use the sliders below to estimate the leaked revenue and see how much Client Cascade can recover for your business.</p>
-                </div>
-                <div class="roi-calc-grid">
-                    <!-- Sliders Box -->
-                    <div class="roi-sliders-box glass-panel">
-                        <!-- Slider 1 -->
-                        <div class="roi-slider-group">
-                            <div class="roi-label-row">
-                                <span>Average Job Price</span>
-                                <span class="roi-val-box" id="roi-job-price-val">$8,500</span>
-                            </div>
-                            <input type="range" id="roi-job-price" class="roi-slider-input" min="1000" max="50000" step="500" value="8500">
-                        </div>
-                        
-                        <!-- Slider 2 -->
-                        <div class="roi-slider-group">
-                            <div class="roi-label-row">
-                                <span>New Bids/Estimates per Month</span>
-                                <span class="roi-val-box" id="roi-bids-val">15</span>
-                            </div>
-                            <input type="range" id="roi-bids" class="roi-slider-input" min="1" max="100" step="1" value="15">
-                        </div>
-                        
-                        <!-- Slider 3 -->
-                        <div class="roi-slider-group">
-                            <div class="roi-label-row">
-                                <span>Current Close Rate</span>
-                                <span class="roi-val-box" id="roi-close-rate-val">30%</span>
-                            </div>
-                            <input type="range" id="roi-close-rate" class="roi-slider-input" min="5" max="90" step="5" value="30">
-                        </div>
-                    </div>
-                    
-                    <!-- Results Box -->
-                    <div class="roi-results-box glass-panel">
-                        <div>
-                            <div class="roi-results-title">Your Profit Projection</div>
-                            <div class="roi-stat-row">
-                                <span class="roi-stat-label">Current Revenue</span>
-                                <span class="roi-stat-number" id="roi-curr-rev">$38,250 / mo</span>
-                            </div>
-                            <div class="roi-stat-row">
-                                <span class="roi-stat-label">Est. Bids Lost to Follow-up</span>
-                                <span class="roi-stat-number" id="roi-lost-bids">3.5 / mo</span>
-                            </div>
-                            <div class="roi-stat-row">
-                                <span class="roi-stat-label">Leaked Monthly Revenue</span>
-                                <span class="roi-stat-number leak" id="roi-leaked-rev">$29,750 / mo</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="roi-highlight-box">
-                                <div class="roi-recovered-label">Recovered with Cascade</div>
-                                <div class="roi-recovered-val" id="roi-monthly-recovered">+$19,125</div>
-                                <div class="roi-recovered-annual" id="roi-annual-recovered">+$229,500 / year</div>
-                            </div>
-                            <div class="roi-note">Assumes a conservative +15% close rate bump through automated check-ins and professional e-contracts.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- MONEY LEAK COMPARISON SECTION -->
         <section class="money-leak-section alt-bg">
             <div class="container">
@@ -992,6 +922,76 @@
                             <button type="submit" class="btn-primary waitlist-submit-btn">Claim Founder Pricing & Access</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR SECTION -->
+        <section class="roi-calculator-section">
+            <div class="container roi-calc-container">
+                <div class="roi-calc-header">
+                    <span class="badge">Profit Calculator</span>
+                    <h2>How Much Money Are You Leaving Behind?</h2>
+                    <p>Use the sliders below to estimate the leaked revenue and see how much Client Cascade can recover for your business.</p>
+                </div>
+                <div class="roi-calc-grid">
+                    <!-- Sliders Box -->
+                    <div class="roi-sliders-box glass-panel">
+                        <!-- Slider 1 -->
+                        <div class="roi-slider-group">
+                            <div class="roi-label-row">
+                                <span>Average Job Price</span>
+                                <span class="roi-val-box" id="roi-job-price-val">$8,500</span>
+                            </div>
+                            <input type="range" id="roi-job-price" class="roi-slider-input" min="1000" max="50000" step="500" value="8500">
+                        </div>
+                        
+                        <!-- Slider 2 -->
+                        <div class="roi-slider-group">
+                            <div class="roi-label-row">
+                                <span>New Bids/Estimates per Month</span>
+                                <span class="roi-val-box" id="roi-bids-val">15</span>
+                            </div>
+                            <input type="range" id="roi-bids" class="roi-slider-input" min="1" max="100" step="1" value="15">
+                        </div>
+                        
+                        <!-- Slider 3 -->
+                        <div class="roi-slider-group">
+                            <div class="roi-label-row">
+                                <span>Current Close Rate</span>
+                                <span class="roi-val-box" id="roi-close-rate-val">30%</span>
+                            </div>
+                            <input type="range" id="roi-close-rate" class="roi-slider-input" min="5" max="90" step="5" value="30">
+                        </div>
+                    </div>
+                    
+                    <!-- Results Box -->
+                    <div class="roi-results-box glass-panel">
+                        <div>
+                            <div class="roi-results-title">Your Profit Projection</div>
+                            <div class="roi-stat-row">
+                                <span class="roi-stat-label">Current Revenue</span>
+                                <span class="roi-stat-number" id="roi-curr-rev">$38,250 / mo</span>
+                            </div>
+                            <div class="roi-stat-row">
+                                <span class="roi-stat-label">Est. Bids Lost to Follow-up</span>
+                                <span class="roi-stat-number" id="roi-lost-bids">3.5 / mo</span>
+                            </div>
+                            <div class="roi-stat-row">
+                                <span class="roi-stat-label">Leaked Monthly Revenue</span>
+                                <span class="roi-stat-number leak" id="roi-leaked-rev">$29,750 / mo</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="roi-highlight-box">
+                                <div class="roi-recovered-label">Recovered with Cascade</div>
+                                <div class="roi-recovered-val" id="roi-monthly-recovered">+$19,125</div>
+                                <div class="roi-recovered-annual" id="roi-annual-recovered">+$229,500 / year</div>
+                            </div>
+                            <div class="roi-note">Assumes a conservative +15% close rate bump through automated check-ins and professional e-contracts.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
