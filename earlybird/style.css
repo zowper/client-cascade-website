@@ -390,8 +390,20 @@ p {
 .hero-visual {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.hero-logo-container {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.hero-logo {
+    height: 80px; /* Twice as large as header logo (40px) */
+    width: auto;
+    display: block;
 }
 
 /* CRM Console Mockup Container */
@@ -1172,6 +1184,19 @@ p {
         justify-content: center;
     }
 
+    .hero-visual {
+        align-items: center;
+    }
+
+    .hero-logo-container {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .hero-logo {
+        margin: 0 auto;
+    }
+
     .feature-row, .feature-row.reverse {
         grid-template-columns: 1fr;
         gap: 3.5rem;
@@ -1195,6 +1220,10 @@ p {
 @media (max-width: 768px) {
     html {
         font-size: 16px; /* 16px base font size is standard on mobile to prevent extreme scaling */
+    }
+
+    .hero-logo {
+        height: 64px; /* Twice as large as mobile header logo (32px) */
     }
 
     .container {
