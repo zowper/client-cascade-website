@@ -1220,6 +1220,16 @@ p {
     .feature-bullet-list li {
         text-align: left;
     }
+
+    .desktop-only {
+        display: none !important;
+    }
+    .mobile-only {
+        display: block !important;
+    }
+    .mobile-only.flex {
+        display: flex !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1881,19 +1891,7 @@ p {
     display: none !important;
 }
 
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none !important;
-    }
-    .mobile-only {
-        display: block !important;
-    }
-    .mobile-only.flex {
-        display: flex !important;
-    }
-    
 
-}
 
 /* --- HERO SMARTPHONE MOCKUP (MOBILE FIRST) --- */
 .phone-mockup-container {
