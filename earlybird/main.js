@@ -229,30 +229,33 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power2.out'
         });
 
-        // Monolithic System Cards reveal
-        gsap.from('.system-card', {
-            scrollTrigger: {
-                trigger: '.system-grid',
-                start: 'top 75%'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out'
+        // Alternating Linear Feature rows
+        document.querySelectorAll('.feature-row').forEach(row => {
+            gsap.from(row.querySelectorAll('.feature-content > *, .feature-visual'), {
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 75%'
+                },
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power2.out'
+            });
         });
 
-        // Monolithic Bonuses Box reveal
-        gsap.from('.system-bonuses-box', {
+        // Bonus cards reveal
+        gsap.from('.bonus-card', {
             scrollTrigger: {
-                trigger: '.system-bonuses-box',
+                trigger: '.bonuses-section',
                 start: 'top 75%'
             },
             opacity: 0,
-            scale: 0.98,
+            scale: 0.95,
             y: 40,
             duration: 0.8,
-            ease: 'power3.out'
+            stagger: 0.2,
+            ease: 'back.out(1.2)'
         });
 
         // Bottom Form Box reveal
@@ -285,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         // Apply transition styling dynamically for fallback
-        const animatedClasses = ['.system-card', '.system-bonuses-box', '.waitlist-form-container'];
+        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container'];
         animatedClasses.forEach(selector => {
             document.querySelectorAll(selector).forEach(el => {
                 el.style.opacity = '0';
