@@ -4,34 +4,36 @@
    Linear High-Converting Layout
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 /* --- CUSTOM VARIABLES & DESIGN TOKENS --- */
 :root {
-    /* Color Palette */
-    --bg-dark: #070913;
-    --bg-darker: #04050a;
-    --card-bg: rgba(15, 23, 42, 0.45);
-    --card-border: rgba(255, 255, 255, 0.07);
-    --card-border-glow: rgba(16, 185, 129, 0.3);
+    /* Color Palette - Steel/Slate & Charcoal Industrial Business Look */
+    --bg-dark: #0b0f19;
+    --bg-darker: #060911;
+    --card-bg: rgba(20, 30, 48, 0.75);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-border-glow: rgba(16, 185, 129, 0.25);
     
-    /* Primary Accents (Emerald / Mint Growth Theme) */
+    /* Primary Accents (Growth Emerald Green - Money/Success) */
     --primary: #10b981;
     --primary-light: #34d399;
     --primary-dark: #047857;
     --primary-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
     --primary-glow: rgba(16, 185, 129, 0.25);
     
-    /* Secondary & Accent Colors */
-    --accent: #6366f1; /* Indigo */
-    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-    --accent-glow: rgba(99, 102, 241, 0.25);
+    /* Secondary & Accent Colors (Rugged Field Orange / Amber) */
+    --accent: #f97316; /* Construction Orange */
+    --accent-light: #fdba74;
+    --accent-dark: #c2410c;
+    --accent-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    --accent-glow: rgba(249, 115, 22, 0.25);
     
-    /* Bonus Colors (Gold/Amber) */
-    --bonus: #f59e0b;
-    --bonus-light: #fbbf24;
-    --bonus-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    --bonus-glow: rgba(245, 158, 11, 0.2);
+    /* Bonus Colors (Gold/Amber - Premium Quality) */
+    --bonus: #eab308;
+    --bonus-light: #fef08a;
+    --bonus-gradient: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    --bonus-glow: rgba(234, 179, 8, 0.2);
 
     /* Text Colors */
     --text-primary: #f8fafc;
@@ -39,8 +41,8 @@
     --text-muted: #64748b;
     --text-emerald: #34d399;
 
-    /* Fonts */
-    --font-heading: 'Outfit', sans-serif;
+    /* Fonts - Industrial Montserrat combined with sleek Plus Jakarta Sans */
+    --font-heading: 'Montserrat', 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -84,7 +86,7 @@ body {
     left: -10%;
     width: 60%;
     height: 60%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
     filter: blur(80px);
 }
 
@@ -94,7 +96,7 @@ body {
     right: -10%;
     width: 55%;
     height: 55%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
     filter: blur(80px);
 }
 
@@ -104,7 +106,7 @@ body {
     left: -10%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
     filter: blur(80px);
 }
 
@@ -114,7 +116,7 @@ body {
     right: -5%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
     filter: blur(80px);
 }
 
@@ -127,8 +129,8 @@ body {
     height: 100%;
     background-size: 40px 40px;
     background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
     z-index: -1;
 }
 
@@ -146,7 +148,7 @@ p {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #00f5a0 0%, #00d9f5 100%);
+    background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -765,9 +767,9 @@ p {
     color: var(--text-emerald);
 }
 
-.mockup-pill-indigo {
-    background: rgba(99, 102, 241, 0.15);
-    color: #818cf8;
+.mockup-pill-orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #fd974f;
 }
 
 .mockup-pill-gold {
@@ -810,9 +812,9 @@ p {
 }
 
 .mockup-calendar-day.filled {
-    background: rgba(99, 102, 241, 0.15);
-    color: #a5b4fc;
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    background: rgba(249, 115, 22, 0.15);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.3);
 }
 
 .mockup-calendar-day.filled-green {
