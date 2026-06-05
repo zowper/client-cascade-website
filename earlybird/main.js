@@ -270,6 +270,32 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power3.out'
         });
 
+        // ROI Calculator Animation
+        gsap.from('.roi-calc-container > *', {
+            scrollTrigger: {
+                trigger: '.roi-calculator-section',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out'
+        });
+
+        // Money Leak Grid Animation
+        gsap.from('.money-leak-section .leak-header > *, .money-leak-section .leak-column', {
+            scrollTrigger: {
+                trigger: '.money-leak-section',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out'
+        });
+
     } else {
         // Fallback standard IntersectionObserver (similar to main site)
         const observerOptions = {
@@ -288,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         // Apply transition styling dynamically for fallback
-        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container'];
+        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container', '.roi-calc-container', '.money-leak-section .leak-column'];
         animatedClasses.forEach(selector => {
             document.querySelectorAll(selector).forEach(el => {
                 el.style.opacity = '0';
@@ -297,5 +323,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.observe(el);
             });
         });
+    }
+
+    // --- 4. ROI CALCULATOR LOGIC ---
+    const sliderJobPrice = document.getElementById('roi-job-price');
+    const sliderBids = document.getElementById('roi-bids');
+    const sliderCloseRate = document.getElementById('roi-close-rate');
+
+    const labelJobPrice = document.getElementById('roi-job-price-val');
+    const labelBids = document.getElementById('roi-bids-val');
+    const labelCloseRate = document.getElementById('roi-close-rate-val');
+
+    const outputCurrRev = document.getElementById('roi-curr-rev');
+    const outputLostBids = document.getElementById('roi-lost-bids');
+    const outputLeakedRev = document.getElementById('roi-leaked-rev');
+    const outputMonthlyRecovered = document.getElementById('roi-monthly-recovered');
+    const outputAnnualRecovered = document.getElementById('roi-annual-recovered');
+
+    function formatCurrency(val) {
+        return '$' + Math.round(val).toLocaleString();
+    }
+
+    function calculateROI() {
+        if (!sliderJobPrice || !sliderBids || !sliderCloseRate) return;
+
+        const jobPrice = parseFloat(sliderJobPrice.value);
+        const bids = parseFloat(sliderBids.value);
+        const closeRate = parseFloat(sliderCloseRate.value) / 100;
+
+        // Update labels
+        if (labelJobPrice) labelJobPrice.textContent = formatCurrency(jobPrice);
+        if (labelBids) labelBids.textContent = bids;
+        if (labelCloseRate) labelCloseRate.textContent = Math.round(closeRate * 100) + '%';
+
+        // 1. Current Monthly Revenue
+        const currentRevenue = jobPrice * bids * closeRate;
+        if (outputCurrRev) outputCurrRev.textContent = formatCurrency(currentRevenue) + ' / mo';
+
+        // 2. Estimated Bids Lost to poor follow-up (assuming 33% of lost bids are follow-up issues)
+        const lostBidsCount = bids * (1 - closeRate);
+        const followUpLostBids = lostBidsCount * 0.33;
+        if (outputLostBids) outputLostBids.textContent = followUpLostBids.toFixed(1) + ' / mo';
+
+        // 3. Leaked Monthly Revenue
+        const leakedRevenue = followUpLostBids * jobPrice;
+        if (outputLeakedRev) outputLeakedRev.textContent = formatCurrency(leakedRevenue) + ' / mo';
+
+        // 4. Monthly and Annual Recovery (assuming Cascade helps recover at least +15% close rate overall)
+        const closeRateBump = 0.15;
+        const monthlyRecovered = jobPrice * bids * closeRateBump;
+        const annualRecovered = monthlyRecovered * 12;
+
+        if (outputMonthlyRecovered) outputMonthlyRecovered.textContent = '+' + formatCurrency(monthlyRecovered);
+        if (outputAnnualRecovered) outputAnnualRecovered.textContent = '+' + formatCurrency(annualRecovered) + ' / year';
+    }
+
+    if (sliderJobPrice && sliderBids && sliderCloseRate) {
+        [sliderJobPrice, sliderBids, sliderCloseRate].forEach(slider => {
+            slider.addEventListener('input', calculateROI);
+        });
+        calculateROI(); // Initial run
     }
 });
