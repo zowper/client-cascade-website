@@ -1220,11 +1220,24 @@ p {
 
 @media (max-width: 768px) {
     html {
-        font-size: 16px; /* 16px base font size is standard on mobile to prevent extreme scaling */
+        font-size: 32px; /* Doubled base size to double all font sizes on mobile */
     }
 
     .hero-logo {
         height: 64px; /* Twice as large as mobile header logo (32px) */
+    }
+
+    /* Full bleed cards to occupy entire screen width on mobile */
+    .bonus-card, 
+    .leak-card, 
+    .waitlist-form-container, 
+    .roi-sliders-box, 
+    .roi-results-box {
+        margin-left: -1.2rem !important;
+        margin-right: -1.2rem !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
     }
 
     .container {
