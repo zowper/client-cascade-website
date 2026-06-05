@@ -358,26 +358,27 @@ p {
 
 .hero-form-box {
     margin-top: 2rem;
-    max-width: 500px;
+    max-width: 550px; /* Wider CTA box for premium spacing and readability */
 }
 
 .hero-inline-form {
     display: flex;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    flex-direction: column; /* Stacked layout for roomy input & bold button */
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
 }
 
 .hero-inline-form .input-field {
-    flex: 1;
+    width: 100%;
 }
 
 .hero-form-note {
     font-size: 0.8rem;
     color: var(--text-muted);
     display: flex;
-    gap: 1rem;
-    justify-content: flex-start;
-    padding-left: 0.2rem;
+    gap: 1.25rem;
+    justify-content: center; /* Centered on desktop */
+    padding-left: 0;
 }
 
 .hero-form-note span {
