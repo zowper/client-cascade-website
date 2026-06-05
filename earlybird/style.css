@@ -37,8 +37,8 @@
 
     /* Text Colors - High contrast for light theme */
     --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
+    --text-secondary: #334155; /* Darker Slate 700 for significantly improved legibility */
+    --text-muted: #475569; /* Slate 600 for better contrast on secondary labels */
     --text-emerald: #047857;
 
     /* Fonts - Industrial Montserrat combined with sleek Plus Jakarta Sans */
@@ -55,7 +55,7 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 18px; /* Bumps base typography across the board on desktop */
     background-color: var(--bg-darker);
 }
 
@@ -140,11 +140,13 @@ h1, h2, h3, h4 {
     color: var(--text-primary);
     font-weight: 700;
     letter-spacing: -0.02em;
+    line-height: 1.25;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.05rem; /* Crisp, readable copy size */
     font-weight: 400;
+    line-height: 1.65;
 }
 
 .gradient-text {
@@ -293,9 +295,9 @@ p {
     background: rgba(16, 185, 129, 0.1);
     border: 1px solid rgba(16, 185, 129, 0.2);
     color: var(--text-emerald);
-    padding: 0.4rem 1rem;
+    padding: 0.45rem 1.1rem;
     border-radius: 9999px;
-    font-size: 0.85rem;
+    font-size: 0.9rem; /* Increased for better legibility */
     font-weight: 600;
     font-family: var(--font-heading);
     letter-spacing: 0.05em;
@@ -342,13 +344,13 @@ p {
 }
 
 .hero-content h1 {
-    font-size: 3.25rem;
-    line-height: 1.15;
+    font-size: 3.4rem; /* Sizable, high-impact header */
+    line-height: 1.2;
     margin-bottom: 1.5rem;
 }
 
 .hero-content p {
-    font-size: 1.15rem;
+    font-size: 1.25rem; /* Larger, readable intro subhead */
     color: var(--text-secondary);
     margin-bottom: 2rem;
     line-height: 1.7;
@@ -432,9 +434,9 @@ p {
 .crm-dot-green { background: #10b981; }
 
 .crm-title {
-    font-size: 0.75rem;
+    font-size: 0.85rem; /* Increased from 0.75rem */
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: 600;
     font-family: var(--font-heading);
 }
 
@@ -504,13 +506,14 @@ p {
 }
 
 .crm-stat-label {
-    font-size: 0.65rem;
+    font-size: 0.75rem; /* Increased from 0.65rem */
     color: var(--text-muted);
     text-transform: uppercase;
+    font-weight: 600;
 }
 
 .crm-stat-val {
-    font-size: 1.1rem;
+    font-size: 1.25rem; /* Increased from 1.1rem */
     font-weight: 700;
     color: var(--text-primary);
     font-family: var(--font-heading);
@@ -579,15 +582,15 @@ p {
 }
 
 .overlay-avatar {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--accent-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 700;
 }
 
@@ -596,20 +599,20 @@ p {
 }
 
 .overlay-name {
-    font-size: 0.7rem;
+    font-size: 0.8rem; /* Increased from 0.7rem */
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .overlay-desc {
-    font-size: 0.6rem;
+    font-size: 0.7rem; /* Increased from 0.6rem */
     color: var(--text-muted);
 }
 
 .overlay-status {
-    font-size: 0.6rem;
+    font-size: 0.75rem; /* Increased from 0.6rem */
     font-weight: 700;
-    padding: 0.15rem 0.4rem;
+    padding: 0.2rem 0.5rem;
     background: rgba(16, 185, 129, 0.15);
     color: var(--text-emerald);
     border-radius: 4px;
@@ -634,12 +637,12 @@ p {
 }
 
 .why-container h2 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-bottom: 1.5rem;
 }
 
 .why-container p {
-    font-size: 1.25rem;
+    font-size: 1.35rem; /* Bumper value description */
     color: var(--text-secondary);
     line-height: 1.8;
 }
@@ -676,7 +679,7 @@ p {
 }
 
 .feature-content h2 {
-    font-size: 2.5rem;
+    font-size: 2.7rem; /* Bounded header readability */
     margin-bottom: 1.5rem;
     color: var(--text-primary);
 }
@@ -685,38 +688,44 @@ p {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
     margin-bottom: 2.25rem;
 }
 
 .feature-bullet-list li {
     position: relative;
-    padding-left: 1.85rem;
-    font-size: 1rem;
-    color: var(--text-secondary);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
 .feature-bullet-list li::before {
     content: "✓";
     position: absolute;
     left: 0;
-    top: 2px;
-    width: 18px;
-    height: 18px;
+    top: 3px;
+    width: 22px;
+    height: 22px;
     background: rgba(16, 185, 129, 0.15);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-light);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: bold;
 }
 
 .feature-bullet-list strong {
     color: var(--text-primary);
-    display: inline-block;
-    margin-bottom: 0.15rem;
+    font-size: 1.15rem; /* Larger, bold titles for features */
+    font-weight: 700;
+}
+
+.feature-bullet-list li span {
+    font-size: 1.05rem; /* Highly legible body/description copy */
+    color: var(--text-secondary);
 }
 
 /* Mockups Styling in Grid Rows */
@@ -734,7 +743,7 @@ p {
     background: #f8fafc;
     padding: 1.25rem;
     box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.1);
-    font-size: 0.75rem;
+    font-size: 0.85rem; /* Increased from 0.75rem */
 }
 
 .mockup-item {
@@ -760,7 +769,7 @@ p {
 .mockup-badge {
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    font-size: 0.6rem;
+    font-size: 0.7rem; /* Increased from 0.6rem */
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -882,12 +891,12 @@ p {
 }
 
 .section-header h2 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-bottom: 1.25rem;
 }
 
 .section-header p {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     color: var(--text-secondary);
 }
 
@@ -943,22 +952,22 @@ p {
 }
 
 .bonus-card h3 {
-    font-size: 1.45rem;
+    font-size: 1.6rem; /* Substantial title font */
     margin-bottom: 0.75rem;
 }
 
 .bonus-card p {
-    font-size: 0.95rem;
+    font-size: 1.05rem; /* Larger copy size */
     color: var(--text-secondary);
 }
 
 .bonus-value {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 1.05rem; /* Bolder value badge */
     color: var(--bonus-light);
     margin-top: 1.25rem;
-    padding: 0.35rem 1rem;
+    padding: 0.4rem 1.1rem;
     background: rgba(234, 179, 8, 0.08);
     border-radius: 8px;
     border: 1px solid rgba(234, 179, 8, 0.15);
@@ -984,7 +993,7 @@ p {
 }
 
 .waitlist-form-container h2 {
-    font-size: 2.75rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -993,7 +1002,7 @@ p {
     color: var(--text-secondary);
     text-align: center;
     margin-bottom: 2.5rem;
-    font-size: 1.1rem;
+    font-size: 1.25rem; /* Bolder bottom subtext */
 }
 
 .signup-form {
@@ -1009,7 +1018,7 @@ p {
 .signup-form label {
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.95rem; /* Much more readable label sizes */
     font-weight: 600;
     color: var(--text-primary);
     font-family: var(--font-heading);
@@ -1032,8 +1041,8 @@ p {
 .waitlist-submit-btn {
     width: 100%;
     margin-top: 1rem;
-    padding: 1.1rem;
-    font-size: 1.15rem;
+    padding: 1.15rem;
+    font-size: 1.25rem; /* Sizable submit button font */
 }
 
 /* Success Modal Overlay & Modal box */
@@ -1095,14 +1104,14 @@ p {
 }
 
 .success-modal h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin-bottom: 0.75rem;
 }
 
 .success-modal p {
     color: var(--text-secondary);
     margin-bottom: 2rem;
-    font-size: 0.95rem;
+    font-size: 1.05rem; /* Larger text inside modal */
 }
 
 /* Floating Sticky Action (for mobile & desktop) */
@@ -1138,7 +1147,7 @@ p {
 }
 
 .quarantine-footer p {
-    font-size: 0.85rem;
+    font-size: 0.95rem; /* Legible footer text */
     color: var(--text-muted);
 }
 
@@ -1184,16 +1193,21 @@ p {
 }
 
 @media (max-width: 768px) {
+    html {
+        font-size: 17px; /* Increased from 16px to scale up everything on mobile devices */
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem; /* slightly smaller to fit screen, but still large and legible */
+        line-height: 1.2;
     }
     
     .why-container h2 {
-        font-size: 2.25rem;
+        font-size: 2.1rem;
     }
 
     .feature-content h2 {
-        font-size: 2rem;
+        font-size: 1.85rem;
     }
 
     .bonuses-grid {
@@ -1215,7 +1229,7 @@ p {
     }
     
     .waitlist-form-container h2 {
-        font-size: 2.25rem;
+        font-size: 2.1rem;
     }
     
     .hero-inline-form {
@@ -1225,5 +1239,69 @@ p {
     
     .hero-inline-form button {
         width: 100%;
+    }
+
+    /* Adjust mockup dashboard console content & sizing specifically for mobile screens */
+    .crm-console {
+        aspect-ratio: 1.3 / 1; /* Taller proportion to prevent text overlap */
+    }
+
+    .crm-body {
+        grid-template-columns: 60px 1fr; /* Narrower sidebar for more content space */
+    }
+
+    .crm-sidebar {
+        padding: 0.75rem 0;
+        gap: 1rem;
+    }
+
+    .crm-side-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .crm-content {
+        padding: 1rem;
+    }
+
+    .crm-stats-grid {
+        gap: 0.5rem;
+    }
+
+    .crm-stat-card {
+        padding: 0.5rem;
+    }
+
+    .crm-stat-label {
+        font-size: 0.75rem;
+    }
+
+    .crm-stat-val {
+        font-size: 1.15rem;
+    }
+
+    .floating-overlay-card {
+        width: 180px;
+        padding: 0.65rem;
+        right: -10px;
+        bottom: 15px;
+    }
+
+    .overlay-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+
+    .overlay-name {
+        font-size: 0.75rem;
+    }
+
+    .overlay-desc {
+        font-size: 0.65rem;
+    }
+
+    .overlay-status {
+        font-size: 0.7rem;
     }
 }
