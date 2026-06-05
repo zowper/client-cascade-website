@@ -1166,10 +1166,6 @@ p {
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1024px) {
-    html {
-        font-size: 36px; /* Doubled base size to double all font sizes on mobile and tablet */
-    }
-
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 3.5rem;
@@ -1237,6 +1233,9 @@ p {
 }
 
 @media (max-width: 768px) {
+    html {
+        font-size: 32px; /* Doubled base size to double all font sizes on mobile */
+    }
 
     .hero-logo {
         height: 64px; /* Twice as large as mobile header logo (32px) */
