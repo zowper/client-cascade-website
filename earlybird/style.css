@@ -1234,24 +1234,11 @@ p {
 
 @media (max-width: 768px) {
     html {
-        font-size: 32px; /* Doubled base size to double all font sizes on mobile */
+        font-size: 16px; /* Professional, high-legibility base size for mobile viewports */
     }
 
     .hero-logo {
-        height: 64px; /* Twice as large as mobile header logo (32px) */
-    }
-
-    /* Full bleed cards to occupy entire screen width on mobile */
-    .bonus-card, 
-    .leak-card, 
-    .waitlist-form-container, 
-    .roi-sliders-box, 
-    .roi-results-box {
-        margin-left: -1.2rem !important;
-        margin-right: -1.2rem !important;
-        border-radius: 0 !important;
-        border-left: none !important;
-        border-right: none !important;
+        height: 64px; /* Proportional mobile hero logo height */
     }
 
     .container {
@@ -1279,11 +1266,15 @@ p {
     }
 
     /* Compact header logo for mobile screens */
-    .header-quarantine {
-        padding: 1rem 0;
+    .header-mobile-only {
+        padding: 1.5rem 0 0.5rem 0;
+        text-align: center;
+        width: 100%;
     }
-    .header-quarantine img {
-        height: 32px;
+    .mobile-header-logo {
+        height: 48px;
+        margin: 0 auto;
+        display: block;
     }
 
     /* Fluid typography styles */
