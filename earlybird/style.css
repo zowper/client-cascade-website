@@ -2239,11 +2239,7 @@ p {
 }
 
 .mobile-tab-visual {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5rem;
+    display: none !important; /* Hidden on mobile to keep tab content compact and focused */
 }
 
 .mobile-feature-preview-card {
