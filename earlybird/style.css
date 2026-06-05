@@ -1878,24 +1878,7 @@ p {
         display: flex !important;
     }
     
-    /* Bonuses horizontal scroll snap */
-    .bonuses-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        gap: 1.25rem !important;
-        padding: 0.5rem 1rem 1.5rem 1rem !important;
-        margin: 0 -1.2rem !important; /* bleed edge */
-        scrollbar-width: none !important;
-    }
-    .bonuses-grid::-webkit-scrollbar {
-        display: none !important;
-    }
-    .bonus-card {
-        flex: 0 0 85% !important;
-        scroll-snap-align: center !important;
-        margin-bottom: 0 !important;
-    }
+
 }
 
 /* --- HERO SMARTPHONE MOCKUP (MOBILE FIRST) --- */
