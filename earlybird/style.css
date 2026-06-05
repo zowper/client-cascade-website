@@ -8,38 +8,38 @@
 
 /* --- CUSTOM VARIABLES & DESIGN TOKENS --- */
 :root {
-    /* Color Palette - Steel/Slate & Charcoal Industrial Business Look */
-    --bg-dark: #0b0f19;
-    --bg-darker: #060911;
-    --card-bg: rgba(20, 30, 48, 0.75);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-border-glow: rgba(16, 185, 129, 0.25);
+    /* Color Palette - Premium light theme for contractors */
+    --bg-dark: #f8fafc;
+    --bg-darker: #f1f5f9;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(15, 23, 42, 0.08);
+    --card-border-glow: rgba(16, 185, 129, 0.15);
     
     /* Primary Accents (Growth Emerald Green - Money/Success) */
     --primary: #10b981;
-    --primary-light: #34d399;
-    --primary-dark: #047857;
+    --primary-light: #059669;
+    --primary-dark: #065f46;
     --primary-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    --primary-glow: rgba(16, 185, 129, 0.25);
+    --primary-glow: rgba(16, 185, 129, 0.15);
     
     /* Secondary & Accent Colors (Rugged Field Orange / Amber) */
     --accent: #f97316; /* Construction Orange */
-    --accent-light: #fdba74;
-    --accent-dark: #c2410c;
+    --accent-light: #ea580c;
+    --accent-dark: #9a3412;
     --accent-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-    --accent-glow: rgba(249, 115, 22, 0.25);
+    --accent-glow: rgba(249, 115, 22, 0.15);
     
     /* Bonus Colors (Gold/Amber - Premium Quality) */
-    --bonus: #eab308;
-    --bonus-light: #fef08a;
-    --bonus-gradient: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-    --bonus-glow: rgba(234, 179, 8, 0.2);
+    --bonus: #d97706;
+    --bonus-light: #b45309;
+    --bonus-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --bonus-glow: rgba(217, 119, 6, 0.1);
 
-    /* Text Colors */
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    /* Text Colors - High contrast for light theme */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
     --text-muted: #64748b;
-    --text-emerald: #34d399;
+    --text-emerald: #047857;
 
     /* Fonts - Industrial Montserrat combined with sleek Plus Jakarta Sans */
     --font-heading: 'Montserrat', 'Outfit', sans-serif;
@@ -86,7 +86,7 @@ body {
     left: -10%;
     width: 60%;
     height: 60%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
     filter: blur(80px);
 }
 
@@ -96,7 +96,7 @@ body {
     right: -10%;
     width: 55%;
     height: 55%;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
     filter: blur(80px);
 }
 
@@ -106,7 +106,7 @@ body {
     left: -10%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(234, 179, 8, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
     filter: blur(80px);
 }
 
@@ -116,11 +116,11 @@ body {
     right: -5%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
     filter: blur(80px);
 }
 
-/* Subtle grid overlay */
+/* Subtle grid overlay - light gray blueprint dots */
 .bg-grid {
     position: absolute;
     top: 0;
@@ -129,8 +129,8 @@ body {
     height: 100%;
     background-size: 40px 40px;
     background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.006) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
+        linear-gradient(to right, rgba(15, 23, 42, 0.012) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.012) 1px, transparent 1px);
     z-index: -1;
 }
 
@@ -172,18 +172,19 @@ p {
 /* Glassmorphic Panel Base */
 .glass-panel {
     background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.4s ease, 
                 box-shadow 0.4s ease;
 }
 
 .glass-panel:hover {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(15, 23, 42, 0.15);
+    box-shadow: 0 20px 40px -5px rgba(15, 23, 42, 0.1), 0 8px 16px -2px rgba(15, 23, 42, 0.04);
 }
 
 /* Buttons & Inputs */
@@ -237,29 +238,29 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.05);
     color: var(--text-primary);
     font-family: var(--font-heading);
     font-weight: 500;
     font-size: 1.05rem;
     padding: 0.85rem 2.0rem;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(15, 23, 42, 0.12);
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 23, 42, 0.2);
     transform: translateY(-2px);
 }
 
 .input-field {
     width: 100%;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid var(--card-border);
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
     border-radius: 12px;
     padding: 0.9rem 1.2rem;
     color: var(--text-primary);
@@ -272,7 +273,7 @@ p {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px var(--primary-glow);
-    background: rgba(15, 23, 42, 0.8);
+    background: #ffffff;
 }
 
 .input-field.error {
@@ -311,7 +312,7 @@ p {
 .header-quarantine {
     padding: 1.5rem 0;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 .header-quarantine img {
@@ -395,11 +396,11 @@ p {
 .crm-console {
     width: 100%;
     aspect-ratio: 1.45 / 1;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.12);
     border-radius: 16px;
-    background: #0d1222;
+    background: #f8fafc;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
     display: flex;
     flex-direction: column;
 }
@@ -407,8 +408,8 @@ p {
 /* Header bar */
 .crm-header {
     height: 44px;
-    background: #090c17;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     display: flex;
     align-items: center;
     padding: 0 1rem;
@@ -454,8 +455,8 @@ p {
 
 /* Sidebar navigation icon strip */
 .crm-sidebar {
-    background: #080a13;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    background: #0f172a;
+    border-right: 1px solid rgba(15, 23, 42, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -495,10 +496,11 @@ p {
 }
 
 .crm-stat-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 10px;
     padding: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .crm-stat-label {
@@ -520,8 +522,8 @@ p {
 }
 
 .crm-chart-box {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 12px;
     padding: 1rem;
     height: 120px;
@@ -530,6 +532,7 @@ p {
     align-items: flex-end;
     gap: 12px;
     justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .crm-chart-bar {
@@ -545,7 +548,7 @@ p {
     left: 20px;
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
     filter: blur(10px);
     pointer-events: none;
 }
@@ -557,10 +560,9 @@ p {
     right: -20px;
     width: 200px;
     padding: 0.85rem;
-    background: rgba(26, 36, 61, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
     border-radius: 12px;
     animation: floating-bounce 3s ease-in-out infinite alternate;
 }
@@ -617,8 +619,8 @@ p {
 .why-section {
     padding: 5rem 0;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
-    background: rgba(4, 5, 10, 0.25);
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    background: #f1f5f9;
 }
 
 .why-container {
@@ -646,11 +648,11 @@ p {
 .feature-detail-section {
     padding: 6.5rem 0;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 .feature-detail-section.alt-bg {
-    background: rgba(4, 5, 10, 0.3);
+    background: #f1f5f9;
 }
 
 .feature-row {
@@ -728,19 +730,20 @@ p {
 .feature-mockup {
     width: 100%;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: #090c15;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #f8fafc;
     padding: 1.25rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.1);
     font-size: 0.75rem;
 }
 
 .mockup-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
     border-radius: 8px;
     padding: 0.75rem;
     margin-bottom: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .mockup-item:last-child {
@@ -779,7 +782,7 @@ p {
 
 .mockup-progress-bar {
     height: 6px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.05);
     border-radius: 3px;
     overflow: hidden;
     margin-top: 0.5rem;
@@ -864,8 +867,8 @@ p {
 .bonuses-section {
     padding: 6.5rem 0;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
-    background: rgba(4, 5, 10, 0.2);
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    background: #f1f5f9;
 }
 
 .section-header {
@@ -902,12 +905,13 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-color: rgba(245, 158, 11, 0.15);
+    border-color: rgba(234, 179, 8, 0.2);
+    background: #ffffff;
 }
 
 .bonus-card:hover {
-    border-color: rgba(245, 158, 11, 0.35);
-    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.08);
+    border-color: rgba(234, 179, 8, 0.45);
+    box-shadow: 0 15px 35px -5px rgba(234, 179, 8, 0.12), 0 5px 15px -2px rgba(234, 179, 8, 0.04);
 }
 
 .bonus-tag {
@@ -928,8 +932,8 @@ p {
     width: 64px;
     height: 64px;
     border-radius: 16px;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.2);
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -955,9 +959,9 @@ p {
     color: var(--bonus-light);
     margin-top: 1.25rem;
     padding: 0.35rem 1rem;
-    background: rgba(245, 158, 11, 0.05);
+    background: rgba(234, 179, 8, 0.08);
     border-radius: 8px;
-    border: 1px solid rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.15);
     letter-spacing: 0.02em;
 }
 
@@ -965,7 +969,7 @@ p {
 .waitlist-section {
     padding: 7rem 0 8rem 0;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 .waitlist-form-container {
@@ -1021,7 +1025,7 @@ p {
 }
 
 .signup-form select.input-field option {
-    background: #0d1324;
+    background: #ffffff;
     color: var(--text-primary);
 }
 
@@ -1039,8 +1043,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(4, 5, 10, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -1129,8 +1133,8 @@ p {
 .quarantine-footer {
     padding: 3rem 0;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    background: rgba(4, 5, 10, 0.5);
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    background: #f1f5f9;
 }
 
 .quarantine-footer p {
