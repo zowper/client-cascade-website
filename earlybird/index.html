@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Cascade | Exclusive Waitlist</title>
+    <meta name="description" content="Join the waitlist for Client Cascade & enjoy founder pricing. The ultimate CRM for contractors who want to make more money with less effort.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Background glowing nodes & grid overlay -->
+    <div class="bg-glow-container">
+        <div class="bg-glow-1"></div>
+        <div class="bg-glow-2"></div>
+        <div class="bg-glow-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Header (Quarantined: No Navigation Links) -->
+    <header class="header-quarantine">
+        <div class="container">
+            <img src="../images/design/CascadeWideSmall.png" alt="Client Cascade Logo">
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="badge">
+                        <span class="dot" style="width:6px; height:6px; background:#10b981; border-radius:50%; display:inline-block; animation: pulse-ring 1s infinite alternate;"></span>
+                        Exclusive Launch Waitlist
+                    </span>
+                    <h1>About Damn Time!<br>A CRM For Contractors Who Like <span class="gradient-text">Making More Money…</span></h1>
+                    <p>Join the waitlist for Client Cascade today & enjoy limited Founder Pricing. Get more jobs, stay organized, manage your crews, and reclaim your free time.</p>
+                    
+                    <div class="hero-form-box glass-panel" style="padding: 1.5rem; border-radius: 16px;">
+                        <form id="hero-earlybird-form" class="hero-inline-form">
+                            <input type="email" id="hero-email" class="input-field" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn-primary">Secure Founder Pricing</button>
+                        </form>
+                        <div class="hero-form-note">
+                            <span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Full Setup Included!
+                            </span>
+                            <span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                100% Secure
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <!-- CSS Dashboard Console Mockup -->
+                    <div class="crm-console">
+                        <div class="crm-header">
+                            <div class="crm-dots">
+                                <div class="crm-dot crm-dot-red"></div>
+                                <div class="crm-dot crm-dot-yellow"></div>
+                                <div class="crm-dot crm-dot-green"></div>
+                            </div>
+                            <div class="crm-title">Client Cascade Console</div>
+                            <div class="crm-user"></div>
+                        </div>
+                        <div class="crm-body">
+                            <div class="crm-sidebar">
+                                <div class="crm-side-icon active">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                                </div>
+                                <div class="crm-side-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                </div>
+                                <div class="crm-side-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                </div>
+                                <div class="crm-side-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                </div>
+                            </div>
+                            <div class="crm-content">
+                                <div class="crm-stats-grid">
+                                    <div class="crm-stat-card">
+                                        <div class="crm-stat-label">Jobs Won</div>
+                                        <div class="crm-stat-val positive">+24</div>
+                                    </div>
+                                    <div class="crm-stat-card">
+                                        <div class="crm-stat-label">Response Time</div>
+                                        <div class="crm-stat-val">2.4m</div>
+                                    </div>
+                                    <div class="crm-stat-card">
+                                        <div class="crm-stat-label">Weekly Rev</div>
+                                        <div class="crm-stat-val positive">$18.2k</div>
+                                    </div>
+                                </div>
+                                <div class="crm-chart-box">
+                                    <div class="crm-chart-glow-accent"></div>
+                                    <div class="crm-chart-bar" style="height: 45%;"></div>
+                                    <div class="crm-chart-bar" style="height: 65%;"></div>
+                                    <div class="crm-chart-bar" style="height: 55%;"></div>
+                                    <div class="crm-chart-bar" style="height: 85%;"></div>
+                                    <div class="crm-chart-bar" style="height: 90%;"></div>
+                                </div>
+                                
+                                <!-- Floating Overlay element -->
+                                <div class="floating-overlay-card">
+                                    <div class="overlay-lead-item">
+                                        <div class="overlay-avatar">JS</div>
+                                        <div class="overlay-info">
+                                            <div class="overlay-name">John Smith (Roofing)</div>
+                                            <div class="overlay-desc">Estimate signed by client</div>
+                                        </div>
+                                        <div class="overlay-status">$14,500</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CLIENT CASCADE SECTION -->
+        <section class="why-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Why Choose Us</span>
+                    <h2>Work Smarter, Make More</h2>
+                    <p>Why Client Cascade? Get more jobs, stay organized, easily manage your team, get paid faster, know your numbers, work smarter and get paid more! All with less effort.</p>
+                </div>
+                
+                <div class="why-grid">
+                    <!-- Card 1 -->
+                    <div class="why-card glass-panel">
+                        <div class="why-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3>Get More Jobs</h3>
+                        <p>Turn estimates into contracts in seconds. Automatic follow-ups ensure you never let a warm lead die, while automated review requests pull in referrals hands-free.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="why-card glass-panel">
+                        <div class="why-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>Easily Manage Teams</h3>
+                        <p>Dispatch crews, coordinate work schedules, monitor callbacks, and fully automate commission pay rates without math headaches or schedule overlaps.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="why-card glass-panel">
+                        <div class="why-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>Get Paid Faster</h3>
+                        <p>Generate professional digital invoices, accept safe credit card transactions on site, and view real-time revenue streams in your custom dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILED FEATURES WITH CONSOLE TABS -->
+        <section class="features-detailed-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Feature Breakdown</span>
+                    <h2>Built For High-Growth Contractors</h2>
+                    <p>Explore the powerful tools we've engineered specifically to streamline your field service operations.</p>
+                </div>
+                
+                <div class="console-container">
+                    <!-- Left Tab Buttons -->
+                    <div class="console-tabs">
+                        <button class="console-tab-btn active" data-tab="jobs">
+                            Get More Jobs
+                            <span class="chevron">→</span>
+                        </button>
+                        <button class="console-tab-btn" data-tab="info">
+                            Organized Customer Info
+                            <span class="chevron">→</span>
+                        </button>
+                        <button class="console-tab-btn" data-tab="team">
+                            Easily Manage Your Team
+                            <span class="chevron">→</span>
+                        </button>
+                        <button class="console-tab-btn" data-tab="numbers">
+                            Know Numbers & Pay
+                            <span class="chevron">→</span>
+                        </button>
+                        <button class="console-tab-btn" data-tab="smarter">
+                            Work Smarter
+                            <span class="chevron">→</span>
+                        </button>
+                    </div>
+
+                    <!-- Right Panels -->
+                    <div class="console-panels glass-panel">
+                        
+                        <!-- TAB 1: GET MORE JOBS -->
+                        <div class="console-panel active" id="panel-jobs">
+                            <div class="panel-content">
+                                <h3>Get More Jobs</h3>
+                                <ul class="panel-bullet-list">
+                                    <li><strong>Estimates That Sell:</strong> Simple, professional, and built to close deals in the field.</li>
+                                    <li><strong>Effortless Scheduling:</strong> Book your site estimates in seconds, synced to your team.</li>
+                                    <li><strong>E-Contracts:</strong> Capture signatures and close agreements right on the spot.</li>
+                                    <li><strong>Never Let a Quote Die:</strong> Automatic "Just Checking In" follow-up sequences.</li>
+                                    <li><strong>Get More Reviews:</strong> Automated post-job customer review request texts.</li>
+                                    <li><strong>Get More Referrals:</strong> Systematically request client referrals hands-off.</li>
+                                </ul>
+                                <button class="btn-primary scroll-to-waitlist">Claim Founder Pricing</button>
+                            </div>
+                            <div class="panel-visual">
+                                <div class="panel-mockup">
+                                    <div class="mockup-item">
+                                        <div class="mockup-header-row">
+                                            <span style="font-weight:700; color:var(--text-primary);">Roofing Estimate #1024</span>
+                                            <span class="mockup-badge mockup-pill-green">Approved</span>
+                                        </div>
+                                        <div style="color:var(--text-emerald); font-weight:700; font-size:1.1rem; margin: 0.25rem 0;">$12,500.00</div>
+                                        <div style="color:var(--text-muted); font-size:0.65rem;">Signed by client: Dave Jenkins via E-Contract</div>
+                                    </div>
+                                    <div class="mockup-item">
+                                        <div class="mockup-header-row">
+                                            <span style="font-weight:700; color:var(--text-primary);">Quote Follow-Up Agent</span>
+                                            <span class="mockup-badge mockup-pill-indigo">Running</span>
+                                        </div>
+                                        <div style="color:var(--text-secondary); margin-top:0.25rem;">"Just checking in to see if you have any questions..."</div>
+                                        <div class="mockup-progress-bar"><div class="mockup-progress-fill" data-width="75%" style="width:75%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: ORGANIZED CUSTOMER INFO -->
+                        <div class="console-panel" id="panel-info">
+                            <div class="panel-content">
+                                <h3>Organized Customer Info</h3>
+                                <ul class="panel-bullet-list">
+                                    <li><strong>One Source of Truth:</strong> Never lose lead sheets, paper notes, or client history again.</li>
+                                    <li><strong>Kill "He Said, She Said":</strong> All phone calls are auto-recorded and AI-transcribed.</li>
+                                    <li><strong>Automated Texts:</strong> Stay connected with prospects without lifting a finger.</li>
+                                    <li><strong>Automated Emails:</strong> Professional outreach schedules that run totally hands-off.</li>
+                                </ul>
+                                <button class="btn-primary scroll-to-waitlist">Secure Waitlist Spot</button>
+                            </div>
+                            <div class="panel-visual">
+                                <div class="panel-mockup">
+                                    <div class="mockup-item">
+                                        <span style="color:var(--text-muted); font-size:0.6rem; text-transform:uppercase; font-weight:700;">Recorded Business Call</span>
+                                        <div style="display:flex; justify-content:space-between; margin-top:0.2rem; color:var(--text-primary); font-weight:600;">
+                                            <span>📞 Call with Frank M. (HVAC)</span>
+                                            <span>04:12</span>
+                                        </div>
+                                        <div style="background:rgba(255,255,255,0.02); border-radius:6px; padding:0.5rem; margin-top:0.5rem; border-left:2px solid var(--primary);">
+                                            <span style="color:var(--primary-light); font-weight:600;">AI Transcript:</span> "Go ahead and order the 3-ton heat pump system. The price works for me."
+                                        </div>
+                                    </div>
+                                    <div class="mockup-item" style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div>
+                                            <div style="font-weight:700; color:var(--text-primary);">Auto-Text Dispatch</div>
+                                            <div style="color:var(--text-muted); font-size:0.65rem;">"On our way! Estimated arrival 2:15 PM."</div>
+                                        </div>
+                                        <span class="mockup-badge mockup-pill-green">Delivered</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: EASILY MANAGE YOUR TEAM -->
+                        <div class="console-panel" id="panel-team">
+                            <div class="panel-content">
+                                <h3>Easily Manage Your Team</h3>
+                                <ul class="panel-bullet-list">
+                                    <li><strong>Order The Troops:</strong> Centralized dashboard for quick dispatching commands.</li>
+                                    <li><strong>Schedule Your Crews:</strong> Manage active jobs, times, and routes at a glance.</li>
+                                    <li><strong>Stop Callback Headaches:</strong> Log and track warranty alerts to protect your brand.</li>
+                                    <li><strong>Automate Your Pay:</strong> Clean commission math processed automatically.</li>
+                                </ul>
+                                <button class="btn-primary scroll-to-waitlist">Get Access Now</button>
+                            </div>
+                            <div class="panel-visual">
+                                <div class="panel-mockup">
+                                    <div class="mockup-item">
+                                        <div class="mockup-header-row">
+                                            <span style="font-weight:700; color:var(--text-primary);">Crew A (Painting)</span>
+                                            <span class="mockup-badge mockup-pill-green" style="display:flex; align-items:center; gap:3px;">
+                                                <span class="mockup-dispatch-cricle pulse"></span>On-Site
+                                            </span>
+                                        </div>
+                                        <div style="color:var(--text-secondary); font-size:0.7rem; margin-top:0.25rem;">Job: 232 Pine Street House Exterior</div>
+                                    </div>
+                                    <div class="mockup-item">
+                                        <div class="mockup-header-row">
+                                            <span style="font-weight:700; color:var(--text-primary);">Weekly Commission Calculations</span>
+                                        </div>
+                                        <div style="display:flex; justify-content:space-between; margin-top:0.4rem; color:var(--text-secondary);">
+                                            <span>Tom R. (Lead Estimator)</span>
+                                            <span style="font-weight:700; color:var(--text-emerald);">$1,480.00 (Auto)</span>
+                                        </div>
+                                        <div class="mockup-progress-bar"><div class="mockup-progress-fill" data-width="90%" style="width:90%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 4: KNOW NUMBERS & PAY -->
+                        <div class="console-panel" id="panel-numbers">
+                            <div class="panel-content">
+                                <h3>Know Numbers & Get Paid</h3>
+                                <ul class="panel-bullet-list">
+                                    <li><strong>Track Your Leads:</strong> Identify exactly which advertising methods make you money.</li>
+                                    <li><strong>Custom KPI Dashboards:</strong> View real-time close rates and team benchmarks.</li>
+                                    <li><strong>Professional Invoicing:</strong> Clean invoice templates sent automatically.</li>
+                                    <li><strong>Integrated Payments:</strong> Accept direct credit card processing on-site.</li>
+                                    <li><strong>Real-Time Revenue:</strong> Know exactly what you've earned at any moment.</li>
+                                </ul>
+                                <button class="btn-primary scroll-to-waitlist">Secure Founder Deal</button>
+                            </div>
+                            <div class="panel-visual">
+                                <div class="panel-mockup">
+                                    <div class="mockup-item">
+                                        <div class="mockup-header-row">
+                                            <span style="font-weight:700; color:var(--text-primary);">Live Cash Flow Tracker</span>
+                                            <span style="color:var(--text-emerald); font-weight:700;">+18.4% MoM</span>
+                                        </div>
+                                        <div style="font-size:1.6rem; font-weight:800; color:var(--text-primary); font-family:var(--font-heading); margin:0.25rem 0;">$42,850.00</div>
+                                        <div style="color:var(--text-muted); font-size:0.65rem;">Pending Payouts: $8,200.00 • Invoices Sent: 8</div>
+                                    </div>
+                                    <div class="mockup-item" style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div>
+                                            <div style="font-weight:700; color:var(--text-primary);">Lead Channel Revenue</div>
+                                            <div style="color:var(--text-muted); font-size:0.65rem;">Google Maps Ad campaign</div>
+                                        </div>
+                                        <div style="color:var(--text-emerald); font-weight:700;">$24,150.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 5: WORK SMARTER -->
+                        <div class="console-panel" id="panel-smarter">
+                            <div class="panel-content">
+                                <h3>Work Smarter</h3>
+                                <ul class="panel-bullet-list">
+                                    <li><strong>Built-In Friendly AI:</strong> Makes your life easier, doesn't steal your job.</li>
+                                    <li><strong>Reclaim Your Time:</strong> Save thousands of hours of tedious admin chores.</li>
+                                </ul>
+                                <button class="btn-primary scroll-to-waitlist">Claim Founder Spot</button>
+                            </div>
+                            <div class="panel-visual">
+                                <div class="panel-mockup">
+                                    <div class="mockup-item" style="border-left: 2px solid var(--accent);">
+                                        <div style="display:flex; align-items:center; gap:6px; margin-bottom:0.25rem;">
+                                            <span style="width:6px; height:6px; background:var(--accent); border-radius:50%;"></span>
+                                            <span style="font-weight:700; color:var(--text-primary);">Cascade AI Co-Pilot</span>
+                                        </div>
+                                        <div style="color:var(--text-secondary);">"I generated 3 check-in messages for proposals that have been pending for over 5 days. Should I dispatch them?"</div>
+                                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                                            <button class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.65rem; border-radius:6px; background:var(--accent-gradient);">Approved & Send</button>
+                                            <button class="btn-secondary" style="padding:0.35rem 0.75rem; font-size:0.65rem; border-radius:6px;">Review Drafts</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BONUSES SECTION -->
+        <section class="bonuses-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge badge-gold">Bonus Suite</span>
+                    <h2>We’re Setting You Up For Success</h2>
+                    <p>Sign up today and get these three exclusive bonuses included for free when we launch.</p>
+                </div>
+                
+                <div class="bonuses-grid">
+                    <!-- Bonus 1 -->
+                    <div class="bonus-card glass-panel">
+                        <span class="bonus-tag">Included</span>
+                        <div class="bonus-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>Free Website Building</h3>
+                        <p>We'll construct a custom, high-converting homepage tailored specifically to your trade, totally optimized to capture incoming leads.</p>
+                        <span class="bonus-value">$1,500 Value</span>
+                    </div>
+                    <!-- Bonus 2 -->
+                    <div class="bonus-card glass-panel">
+                        <span class="bonus-tag">Included</span>
+                        <div class="bonus-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>Free Coaching Community</h3>
+                        <p>Get exclusive membership to our private network. Interact, share blueprints, and scale alongside other high-earning contractors.</p>
+                        <span class="bonus-value">Priceless Access</span>
+                    </div>
+                    <!-- Bonus 3 -->
+                    <div class="bonus-card glass-panel">
+                        <span class="bonus-tag">Included</span>
+                        <div class="bonus-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                        </div>
+                        <h3>Full Setup Included!</h3>
+                        <p>We don’t just give you the software; we build it for you. We configure your accounts, import data, and deploy your custom settings.</p>
+                        <span class="bonus-value">Done-For-You</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM WAITLIST SECTION -->
+        <section id="waitlist-form-section" class="waitlist-section">
+            <div class="container">
+                <div class="waitlist-form-container glass-panel">
+                    <div style="text-align:center;">
+                        <span class="badge">Founder Pricing</span>
+                    </div>
+                    <h2>Secure Founder Pricing Today</h2>
+                    <p class="desc">Client Cascade is launching soon! Join the waitlist now to secure your earlybird discount and lock in full setup benefits.</p>
+                    
+                    <form id="waitlist-main-form" class="signup-form">
+                        <div>
+                            <label for="main-name">Full Name</label>
+                            <input type="text" id="main-name" class="input-field" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="main-email">Email Address</label>
+                            <input type="email" id="main-email" class="input-field" placeholder="john@example.com" required>
+                        </div>
+                        <div>
+                            <label for="main-phone">Phone Number</label>
+                            <input type="tel" id="main-phone" class="input-field" placeholder="(555) 555-5555" required>
+                        </div>
+                        <div>
+                            <label for="main-company">Company Name</label>
+                            <input type="text" id="main-company" class="input-field" placeholder="Doe Contracting" required>
+                        </div>
+                        <div class="form-full-width">
+                            <label for="main-trade">Primary Trade</label>
+                            <select id="main-trade" class="input-field" required>
+                                <option value="" disabled selected>Select your trade...</option>
+                                <option value="roofing">Roofing & Siding</option>
+                                <option value="gutters">Gutters & Downspouts</option>
+                                <option value="hvac">HVAC & Plumbing</option>
+                                <option value="landscaping">Landscaping & Masonry</option>
+                                <option value="painting">Painting & Decorating</option>
+                                <option value="general">General Contracting</option>
+                                <option value="other">Other Trade / Specialty</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-full-width">
+                            <button type="submit" class="btn-primary waitlist-submit-btn">Claim Founder Pricing & Access</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (QUARANTINED) -->
+    <footer class="quarantine-footer">
+        <div class="container">
+            <p>&copy; 2026 Client Cascade. All Rights Reserved. Fully Encrypted & Secured.</p>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button (Bottom right) -->
+    <div id="floating-cta" class="floating-cta">
+        <button class="btn-primary scroll-to-waitlist">Secure Founder Spot ⚡</button>
+    </div>
+
+    <!-- SUCCESS MODAL OVERLAY -->
+    <div id="success-modal-overlay" class="modal-overlay">
+        <div class="success-modal glass-panel">
+            <div class="success-icon-container">✓</div>
+            <h3>You're On The Waitlist!</h3>
+            <p>Congratulations! Your founder pricing and bonus package have been locked in. We will reach out via email and text message as soon as early access slots open up.</p>
+            <button id="close-modal-btn" class="btn-primary" style="padding: 0.75rem 2rem;">Awesome, Thanks!</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
