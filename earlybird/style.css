@@ -938,6 +938,7 @@ p {
     text-align: center;
     border-color: rgba(234, 179, 8, 0.2);
     background: #ffffff;
+    height: 100%;
 }
 
 .bonus-card:hover {
