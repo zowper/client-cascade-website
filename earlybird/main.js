@@ -374,35 +374,5 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateROI(); // Initial run
     }
 
-    // --- 5. MOBILE INTERACTIVITY LOGIC ---
-    
-    // Mobile Features Hub Tabs
-    const tabButtons = document.querySelectorAll('.feature-tab-btn');
-    const tabContents = document.querySelectorAll('.mobile-tab-content');
-    
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetTab = btn.getAttribute('data-tab');
-            
-            // Toggle active state on buttons
-            tabButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Toggle active state on content panels
-            tabContents.forEach(content => {
-                if (content.id === targetTab) {
-                    content.classList.add('active');
-                } else {
-                    content.classList.remove('active');
-                }
-            });
-        });
-    });
 
-
-
-    // Re-bind click for dynamically loaded/created mobile elements if any
-    document.querySelectorAll('.mobile-only .scroll-to-waitlist').forEach(btn => {
-        btn.addEventListener('click', scrollToWaitlist);
-    });
 });
