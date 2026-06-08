@@ -981,6 +981,7 @@ p {
 .bonus-card p {
     font-size: 1.05rem; /* Larger copy size */
     color: var(--text-secondary);
+    margin-bottom: 1.5rem;
 }
 
 .bonus-value {
@@ -988,7 +989,7 @@ p {
     font-weight: 800;
     font-size: 1.05rem; /* Bolder value badge */
     color: var(--bonus-light);
-    margin-top: 1.25rem;
+    margin-top: auto;
     padding: 0.4rem 1.1rem;
     background: rgba(234, 179, 8, 0.08);
     border-radius: 8px;
