@@ -283,18 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power2.out'
         });
 
-        // Money Leak Grid Animation
-        gsap.from('.money-leak-section .leak-header > *, .money-leak-section .leak-column', {
-            scrollTrigger: {
-                trigger: '.money-leak-section',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out'
-        });
+
 
     } else {
         // Fallback standard IntersectionObserver (similar to main site)
@@ -314,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         // Apply transition styling dynamically for fallback
-        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container', '.roi-calc-container', '.money-leak-section .leak-column'];
+        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container', '.roi-calc-container'];
         animatedClasses.forEach(selector => {
             document.querySelectorAll(selector).forEach(el => {
                 el.style.opacity = '0';
