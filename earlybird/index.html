@@ -34,141 +34,144 @@
     <main>
         <!-- HERO SECTION -->
         <section class="hero-section">
-            <div class="container hero-grid">
-                <div class="hero-content">
+            <div class="container">
+                <!-- Hero Header (Spans full width) -->
+                <div class="hero-header">
                     <span class="badge">
                         <span class="dot" style="width:6px; height:6px; background:#10b981; border-radius:50%; display:inline-block; animation: pulse-ring-mock 1s infinite alternate;"></span>
                         Exclusive Early Access
                     </span>
                     <h1>About Damn Time! <br>A CRM For Contractors Who Like <span class="gradient-text">Making More Money…</span></h1>
-                    <p>Join The Waitlist For Client Cascade & Enjoy Founder Pricing.</p>
+                </div>
+
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <p>Join The Waitlist For Client Cascade & Enjoy Founder Pricing.</p>
+                        
+                        <div class="hero-form-box glass-panel" style="padding: 1.5rem; border-radius: 16px;">
+                            <form id="hero-earlybird-form" class="hero-inline-form">
+                                <input type="email" id="hero-email" class="input-field" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn-primary">Secure Founder Pricing</button>
+                            </form>
+                            <div class="hero-form-note">
+                                <span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Full Setup Included!
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                    100% Secured
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="hero-form-box glass-panel" style="padding: 1.5rem; border-radius: 16px;">
-                        <form id="hero-earlybird-form" class="hero-inline-form">
-                            <input type="email" id="hero-email" class="input-field" placeholder="Enter your email address" required>
-                            <button type="submit" class="btn-primary">Secure Founder Pricing</button>
-                        </form>
-                        <div class="hero-form-note">
-                            <span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Full Setup Included!
-                            </span>
-                            <span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                100% Secured
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-visual">
-
-
-                    <!-- CSS Dashboard Console Mockup -->
-                    <div class="crm-console desktop-only">
-                        <div class="crm-header">
-                            <div class="crm-dots">
-                                <div class="crm-dot crm-dot-red"></div>
-                                <div class="crm-dot crm-dot-yellow"></div>
-                                <div class="crm-dot crm-dot-green"></div>
+                    <div class="hero-visual">
+                        <!-- CSS Dashboard Console Mockup -->
+                        <div class="crm-console desktop-only">
+                            <div class="crm-header">
+                                <div class="crm-dots">
+                                    <div class="crm-dot crm-dot-red"></div>
+                                    <div class="crm-dot crm-dot-yellow"></div>
+                                    <div class="crm-dot crm-dot-green"></div>
+                                </div>
+                                <div class="crm-title">Client Cascade</div>
+                                <div class="crm-user"></div>
                             </div>
-                            <div class="crm-title">Client Cascade</div>
-                            <div class="crm-user"></div>
-                        </div>
-                        <div class="crm-body">
-                            <div class="crm-sidebar">
-                                <div class="crm-side-icon active">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-                                </div>
-                                <div class="crm-side-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                </div>
-                                <div class="crm-side-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                </div>
-                                <div class="crm-side-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                                </div>
-                            </div>
-                            <div class="crm-content">
-                                <div class="crm-stats-grid">
-                                    <div class="crm-stat-card">
-                                        <div class="crm-stat-label">Jobs Won</div>
-                                        <div class="crm-stat-val positive">+24</div>
+                            <div class="crm-body">
+                                <div class="crm-sidebar">
+                                    <div class="crm-side-icon active">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
                                     </div>
-                                    <div class="crm-stat-card">
-                                        <div class="crm-stat-label">Response Time</div>
-                                        <div class="crm-stat-val">2.4m</div>
+                                    <div class="crm-side-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                     </div>
-                                    <div class="crm-stat-card">
-                                        <div class="crm-stat-label">Weekly Rev</div>
-                                        <div class="crm-stat-val positive">$78.3k</div>
+                                    <div class="crm-side-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                    </div>
+                                    <div class="crm-side-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                                     </div>
                                 </div>
-                                <div class="crm-chart-box">
-                                    <div class="crm-chart-glow-accent"></div>
-                                    <div class="crm-chart-bar" style="height: 55%;"></div>
-                                    <div class="crm-chart-bar" style="height: 75%;"></div>
-                                    <div class="crm-chart-bar" style="height: 65%;"></div>
-                                    <div class="crm-chart-bar" style="height: 90%;"></div>
-                                    <div class="crm-chart-bar" style="height: 95%;"></div>
-                                </div>
-                                
-                                <div class="floating-overlay-card">
-                                    <div class="overlay-lead-item">
-                                        <div class="overlay-avatar">JS</div>
-                                        <div class="overlay-info">
-                                            <div class="overlay-name">John Smith</div>
-                                            <div class="overlay-desc">Contract approved by client</div>
+                                <div class="crm-content">
+                                    <div class="crm-stats-grid">
+                                        <div class="crm-stat-card">
+                                            <div class="crm-stat-label">Jobs Won</div>
+                                            <div class="crm-stat-val positive">+24</div>
                                         </div>
-                                        <div class="overlay-status">$14,500</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Smartphone Mockup -->
-                    <div class="phone-mockup-container mobile-only">
-                        <div class="phone-device">
-                            <div class="phone-notch"></div>
-                            <div class="phone-screen">
-                                <div class="phone-header-bar">
-                                    <span class="phone-time">9:41</span>
-                                    <div class="phone-icons">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px; vertical-align: middle;"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(-90deg); vertical-align: middle;"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
-                                    </div>
-                                </div>
-                                <div class="phone-notification">
-                                    <div class="notification-avatar">CC</div>
-                                    <div class="notification-body">
-                                        <div class="notification-title">
-                                            <span>Cascade Automations</span>
-                                            <span class="notification-time">now</span>
+                                        <div class="crm-stat-card">
+                                            <div class="crm-stat-label">Response Time</div>
+                                            <div class="crm-stat-val">2.4m</div>
                                         </div>
-                                        <div class="notification-text">John Smith approved roof estimate & signed e-contract!</div>
+                                        <div class="crm-stat-card">
+                                            <div class="crm-stat-label">Weekly Rev</div>
+                                            <div class="crm-stat-val positive">$78.3k</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="phone-app-content">
-                                    <img class="phone-app-logo" src="../images/design/CascadeWideSmall.png" alt="Client Cascade Logo" style="filter: brightness(0) invert(1); opacity:0.85;">
-                                    <div class="phone-main-card">
-                                        <div class="phone-card-label">Jobs Won Today</div>
-                                        <div class="phone-card-value">+$14,500</div>
-                                        <div class="phone-card-subtext">3 estimates closed • 100% success</div>
+                                    <div class="crm-chart-box">
+                                        <div class="crm-chart-glow-accent"></div>
+                                        <div class="crm-chart-bar" style="height: 55%;"></div>
+                                        <div class="crm-chart-bar" style="height: 75%;"></div>
+                                        <div class="crm-chart-bar" style="height: 65%;"></div>
+                                        <div class="crm-chart-bar" style="height: 90%;"></div>
+                                        <div class="crm-chart-bar" style="height: 95%;"></div>
                                     </div>
-                                    <div class="phone-action-btn-wrapper">
-                                        <button class="phone-swipe-btn scroll-to-waitlist">Secure Founder Deal ⚡</button>
+                                    
+                                    <div class="floating-overlay-card">
+                                        <div class="overlay-lead-item">
+                                            <div class="overlay-avatar">JS</div>
+                                            <div class="overlay-info">
+                                                <div class="overlay-name">John Smith</div>
+                                                <div class="overlay-desc">Contract approved by client</div>
+                                            </div>
+                                            <div class="overlay-status">$14,500</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="phone-footer-lbl">Client Cascade Mobile App</div>
-                                    <div class="phone-home-indicator"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+
+                        <!-- Mobile Smartphone Mockup -->
+                        <div class="phone-mockup-container mobile-only">
+                            <div class="phone-device">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-header-bar">
+                                        <span class="phone-time">9:41</span>
+                                        <div class="phone-icons">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px; vertical-align: middle;"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(-90deg); vertical-align: middle;"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
+                                        </div>
+                                    </div>
+                                    <div class="phone-notification">
+                                        <div class="notification-avatar">CC</div>
+                                        <div class="notification-body">
+                                            <div class="notification-title">
+                                                <span>Cascade Automations</span>
+                                                <span class="notification-time">now</span>
+                                            </div>
+                                            <div class="notification-text">John Smith approved roof estimate & signed e-contract!</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-app-content">
+                                        <img class="phone-app-logo" src="../images/design/CascadeWideSmall.png" alt="Client Cascade Logo" style="filter: brightness(0) invert(1); opacity:0.85;">
+                                        <div class="phone-main-card">
+                                            <div class="phone-card-label">Jobs Won Today</div>
+                                            <div class="phone-card-value">+$14,500</div>
+                                            <div class="phone-card-subtext">3 estimates closed • 100% success</div>
+                                        </div>
+                                        <div class="phone-action-btn-wrapper">
+                                            <button class="phone-swipe-btn scroll-to-waitlist">Secure Founder Deal ⚡</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="phone-footer-lbl">Client Cascade Mobile App</div>
+                                        <div class="phone-home-indicator"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
             </div>
         </section>
 

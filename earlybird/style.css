@@ -339,14 +339,23 @@ p {
     max-width: 650px;
 }
 
-.hero-content .badge {
+.hero-header {
+    margin-bottom: 3.5rem;
+}
+
+.hero-header .badge {
     margin-bottom: 1.5rem;
 }
 
-.hero-content h1 {
-    font-size: 3.0rem; /* Sizable, high-impact header (slightly reduced for better wrap) */
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+.hero-header h1 {
+    font-size: 3.6rem; /* High-impact heading spanning full width */
+    line-height: 1.15;
+    margin-bottom: 0;
+    max-width: 1100px;
+}
+
+.hero-content {
+    max-width: 650px;
 }
 
 .hero-content p {
@@ -1166,6 +1175,11 @@ p {
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1024px) {
+    .hero-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 3.5rem;
@@ -1278,12 +1292,12 @@ p {
     }
 
     /* Fluid typography styles */
-    .hero-content h1 {
-        font-size: 1.8rem; /* Clean and fitting for mobile viewports (slightly reduced) */
+    .hero-header h1 {
+        font-size: 2.0rem; /* Clean and fitting for mobile viewports (slightly reduced) */
         line-height: 1.25;
         margin-bottom: 1rem;
     }
-    .hero-content h1 br {
+    .hero-header h1 br {
         display: none; /* Hide forced line-break on mobile */
     }
     .hero-content p {

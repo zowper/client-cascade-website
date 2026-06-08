@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Hero Content Animation
-        gsap.from('.hero-content > *', {
+        gsap.from('.hero-header > *, .hero-content > *', {
             opacity: 0,
             y: 30,
             duration: 0.8,
