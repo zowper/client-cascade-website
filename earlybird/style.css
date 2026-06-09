@@ -262,12 +262,13 @@ p {
 .input-field {
     width: 100%;
     background: #ffffff;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #94a3b8;
     border-radius: 12px;
     padding: 0.9rem 1.2rem;
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.02);
     transition: all 0.3s ease;
 }
 
@@ -368,6 +369,9 @@ p {
 .hero-form-box {
     margin-top: 2rem;
     max-width: 550px; /* Wider CTA box for premium spacing and readability */
+    background: #ffffff !important; /* Force solid white background for high visibility */
+    border: 1px solid rgba(15, 23, 42, 0.15) !important; /* Crisp, visible border */
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 10px 20px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 .hero-inline-form {
@@ -1012,6 +1016,9 @@ p {
     margin: 0 auto;
     padding: 3.5rem 3rem;
     position: relative;
+    background: #ffffff !important; /* Force solid white background for high visibility */
+    border: 1px solid rgba(15, 23, 42, 0.15) !important; /* Crisp, visible border */
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 10px 20px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 .waitlist-form-container .badge {
