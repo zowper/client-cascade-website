@@ -369,6 +369,7 @@ p {
 .hero-form-box {
     margin-top: 2rem;
     max-width: 550px; /* Wider CTA box for premium spacing and readability */
+    border-radius: 20px;
     background: #ffffff !important; /* Force solid white background for high visibility */
     border: 1px solid rgba(15, 23, 42, 0.15) !important; /* Crisp, visible border */
     box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 10px 20px -10px rgba(15, 23, 42, 0.08) !important;
@@ -1016,6 +1017,7 @@ p {
     margin: 0 auto;
     padding: 3.5rem 3rem;
     position: relative;
+    border-radius: 20px;
     background: #ffffff !important; /* Force solid white background for high visibility */
     border: 1px solid rgba(15, 23, 42, 0.15) !important; /* Crisp, visible border */
     box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 10px 20px -10px rgba(15, 23, 42, 0.08) !important;
