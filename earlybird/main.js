@@ -8,19 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. SMOOTH SCROLL ROUTING & FLOATING CTA ---
     const floatingCta = document.getElementById('floating-cta');
-    const waitlistSection = document.getElementById('waitlist-form-section');
+    const heroSection = document.querySelector('.hero-section');
     const ctaScrollBtns = document.querySelectorAll('.scroll-to-waitlist');
+    const heroStep1 = document.getElementById('hero-step-1');
 
-    // Smooth scroll to waitlist section
-    function scrollToWaitlist(e) {
+    // Smooth scroll to hero section and focus appropriate input
+    function scrollToHero(e) {
         if (e) e.preventDefault();
-        if (waitlistSection) {
-            waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (heroSection) {
+            heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        
+        // Focus the appropriate input after scroll finishes
+        setTimeout(() => {
+            if (heroStep1 && heroStep1.style.display !== 'none') {
+                const emailInput = document.getElementById('hero-email');
+                if (emailInput) emailInput.focus();
+            } else {
+                const nameInput = document.getElementById('hero-name');
+                if (nameInput) nameInput.focus();
+            }
+        }, 800);
     }
 
     ctaScrollBtns.forEach(btn => {
-        btn.addEventListener('click', scrollToWaitlist);
+        btn.addEventListener('click', scrollToHero);
     });
 
     // Toggle Floating CTA visibility based on scroll position
@@ -35,35 +47,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. FORM VALIDATION & SIGNUP INTERACTIONS ---
     const heroForm = document.getElementById('hero-earlybird-form');
+    const heroVipForm = document.getElementById('hero-vip-form');
     const mainForm = document.getElementById('waitlist-main-form');
-    const mainEmailInput = document.getElementById('main-email');
-    const mainNameInput = document.getElementById('main-name');
+    const bottomSection = document.getElementById('waitlist-form-section');
+    const heroStep2 = document.getElementById('hero-step-2');
     
     // Modal Elements
     const modalOverlay = document.getElementById('success-modal-overlay');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // Hero Form (Email-only) - Routes to detailed form
+    // Step 1: Hero Form (Email-only) Submission
     if (heroForm) {
         heroForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('hero-email');
             const email = emailInput.value.trim();
+            const submitBtn = heroForm.querySelector('button[type="submit"]');
 
             if (validateEmail(email)) {
-                // Autofill email in bottom form
-                if (mainEmailInput) {
-                    mainEmailInput.value = email;
-                }
-                
-                // Clear error, scroll to waitlist, and focus Name
                 emailInput.classList.remove('error');
-                scrollToWaitlist();
                 
-                // Focus Name with a slight delay to let scroll happen
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '⚡ Securing Spot...';
+
+                // Simulate saving email address immediately to database
                 setTimeout(() => {
-                    if (mainNameInput) mainNameInput.focus();
-                }, 800);
+                    console.log('Spot secured immediately for:', email);
+                    localStorage.setItem('earlybird_email', email);
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    
+                    // Smooth transition to Step 2 (VIP Upsell)
+                    if (heroStep1 && heroStep2) {
+                        heroStep1.style.opacity = '0';
+                        setTimeout(() => {
+                            heroStep1.style.display = 'none';
+                            heroStep2.style.display = 'block';
+                            // Trigger layout paint reflow
+                            heroStep2.offsetHeight;
+                            heroStep2.style.opacity = '1';
+                            
+                            // Focus Name field
+                            const heroName = document.getElementById('hero-name');
+                            if (heroName) heroName.focus();
+                        }, 400);
+                    }
+                    
+                    // Render/show bottom form section (Step 2 VIP Upsell)
+                    if (bottomSection) {
+                        bottomSection.style.display = 'block';
+                        bottomSection.offsetHeight; // Reflow
+                        bottomSection.style.opacity = '1';
+                        
+                        // Refresh GSAP ScrollTrigger trigger points if GSAP is loaded
+                        if (typeof ScrollTrigger !== 'undefined') {
+                            ScrollTrigger.refresh();
+                        }
+                    }
+                }, 1000);
             } else {
                 // Shake & error highlight
                 emailInput.classList.add('error');
@@ -72,73 +117,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Main Waitlist Form Submission
-    if (mainForm) {
-        mainForm.addEventListener('submit', (e) => {
+    // Step 2: Handles VIP Form Submissions (for both Hero and Bottom VIP forms)
+    function handleVipFormSubmission(formElement, nameField, phoneField, companyField, tradeField) {
+        if (!formElement) return;
+        
+        formElement.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Collect fields to validate
-            const name = document.getElementById('main-name');
-            const email = document.getElementById('main-email');
-            const phone = document.getElementById('main-phone');
-            const company = document.getElementById('main-company');
-            const trade = document.getElementById('main-trade');
-            const submitBtn = mainForm.querySelector('button[type="submit"]');
-
+            const submitBtn = formElement.querySelector('button[type="submit"]');
             let isValid = true;
 
             // Reset error highlights
-            [name, email, phone, company, trade].forEach(input => {
+            [nameField, phoneField, companyField, tradeField].forEach(input => {
                 if (input) input.classList.remove('error');
             });
 
             // Validations
-            if (!name.value.trim()) {
-                name.classList.add('error');
-                shakeElement(name);
+            if (!nameField || !nameField.value.trim()) {
+                if (nameField) nameField.classList.add('error');
+                shakeElement(nameField);
                 isValid = false;
             }
-            if (!validateEmail(email.value.trim())) {
-                email.classList.add('error');
-                shakeElement(email);
+            if (!phoneField || !validatePhone(phoneField.value.trim())) {
+                if (phoneField) phoneField.classList.add('error');
+                shakeElement(phoneField);
                 isValid = false;
             }
-            if (!validatePhone(phone.value.trim())) {
-                phone.classList.add('error');
-                shakeElement(phone);
+            if (!companyField || !companyField.value.trim()) {
+                if (companyField) companyField.classList.add('error');
+                shakeElement(companyField);
                 isValid = false;
             }
-            if (!company.value.trim()) {
-                company.classList.add('error');
-                shakeElement(company);
-                isValid = false;
-            }
-            if (trade && !trade.value) {
-                trade.classList.add('error');
-                shakeElement(trade);
+            if (tradeField && !tradeField.value) {
+                tradeField.classList.add('error');
+                shakeElement(tradeField);
                 isValid = false;
             }
 
             if (isValid) {
-                // Simulate loading state
                 const originalText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '⚡ Securing Your Spot...';
+                submitBtn.innerHTML = '⚡ Claiming VIP Setup...';
 
                 setTimeout(() => {
+                    // Save VIP onboarding details
+                    const email = localStorage.getItem('earlybird_email') || '';
+                    const vipData = {
+                        email: email,
+                        name: nameField.value.trim(),
+                        phone: phoneField.value.trim(),
+                        company: companyField.value.trim(),
+                        trade: tradeField.value
+                    };
+                    console.log('VIP onboarding details submitted:', vipData);
+                    localStorage.setItem('earlybird_vip_details', JSON.stringify(vipData));
+
                     // Show success modal
                     if (modalOverlay) {
                         modalOverlay.classList.add('active');
                     }
                     
-                    // Reset form and button
-                    mainForm.reset();
-                    if (heroForm) heroForm.reset();
+                    // Reset all forms
+                    if (heroVipForm) heroVipForm.reset();
+                    if (mainForm) mainForm.reset();
+                    
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
-                }, 1500);
+                }, 1200);
             }
         });
+    }
+
+    // Bind VIP Form Submissions
+    if (heroVipForm) {
+        handleVipFormSubmission(
+            heroVipForm,
+            document.getElementById('hero-name'),
+            document.getElementById('hero-phone'),
+            document.getElementById('hero-company'),
+            document.getElementById('hero-trade')
+        );
+    }
+
+    if (mainForm) {
+        handleVipFormSubmission(
+            mainForm,
+            document.getElementById('main-name'),
+            document.getElementById('main-phone'),
+            document.getElementById('main-company'),
+            document.getElementById('main-trade')
+        );
     }
 
     // Close success modal

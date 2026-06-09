@@ -48,20 +48,64 @@
                     <div class="hero-content">
                         <p>Join The Waitlist For Client Cascade & Enjoy Founder Pricing.</p>
                         
-                        <div class="hero-form-box glass-panel" style="padding: 1.5rem; border-radius: 16px;">
-                            <form id="hero-earlybird-form" class="hero-inline-form">
-                                <input type="email" id="hero-email" class="input-field" placeholder="Enter your email address" required>
-                                <button type="submit" class="btn-primary">Secure Founder Pricing</button>
-                            </form>
-                            <div class="hero-form-note">
-                                <span>
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                    Full Setup Included!
-                                </span>
-                                <span>
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                    100% Secured
-                                </span>
+                        <div class="hero-form-box glass-panel" style="padding: 1.5rem; border-radius: 16px; min-height: 140px; transition: all 0.5s ease;">
+                            <!-- STEP 1 VIEW -->
+                            <div id="hero-step-1" class="step-container" style="transition: opacity 0.4s ease; opacity: 1;">
+                                <form id="hero-earlybird-form" class="hero-inline-form">
+                                    <input type="email" id="hero-email" class="input-field" placeholder="Enter your email address" required>
+                                    <button type="submit" class="btn-primary">Secure Founder Pricing</button>
+                                </form>
+                                <div class="hero-form-note">
+                                    <span>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                        Full Setup Included!
+                                    </span>
+                                    <span>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                        100% Secured
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- STEP 2 VIEW (VIP UPSELL) -->
+                            <div id="hero-step-2" class="step-container" style="display: none; opacity: 0; transition: opacity 0.4s ease;">
+                                <div style="text-align:center; margin-bottom: 0.75rem;">
+                                    <span class="badge">SPOT SECURED</span>
+                                </div>
+                                <h3 style="font-size: 1.25rem; text-align: center; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-heading);">You're In! Claim Your VIP Onboarding.</h3>
+                                <p style="font-size: 0.85rem; text-align: center; margin-bottom: 1.25rem; color: var(--text-secondary); line-height: 1.4;">
+                                    Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.
+                                </p>
+                                <form id="hero-vip-form" class="signup-form">
+                                    <div>
+                                        <label for="hero-name" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; display: block;">Full Name</label>
+                                        <input type="text" id="hero-name" class="input-field" placeholder="John Doe" style="padding: 0.75rem 1rem;" required>
+                                    </div>
+                                    <div>
+                                        <label for="hero-phone" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; display: block;">Phone Number</label>
+                                        <input type="tel" id="hero-phone" class="input-field" placeholder="(555) 555-5555" style="padding: 0.75rem 1rem;" required>
+                                    </div>
+                                    <div>
+                                        <label for="hero-company" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; display: block;">Company Name</label>
+                                        <input type="text" id="hero-company" class="input-field" placeholder="Doe Contracting" style="padding: 0.75rem 1rem;" required>
+                                    </div>
+                                    <div>
+                                        <label for="hero-trade" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; display: block;">Primary Trade</label>
+                                        <select id="hero-trade" class="input-field" style="padding: 0.75rem 1rem; appearance: none; background-image: url(&quot;data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1rem;" required>
+                                            <option value="" disabled selected>Select your trade...</option>
+                                            <option value="roofing">Roofing & Siding</option>
+                                            <option value="gutters">Gutters & Downspouts</option>
+                                            <option value="hvac">HVAC & Plumbing</option>
+                                            <option value="landscaping">Landscaping & Masonry</option>
+                                            <option value="painting">Painting & Decorating</option>
+                                            <option value="general">General Contracting</option>
+                                            <option value="other">Other Trade / Specialty</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-full-width" style="margin-top: 0.5rem;">
+                                        <button type="submit" class="btn-primary" style="width: 100%; padding: 0.95rem; font-size: 1.1rem;">Claim VIP Setup</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -534,23 +578,19 @@
         </section>
 
         <!-- BOTTOM WAITLIST SECTION -->
-        <section id="waitlist-form-section" class="waitlist-section">
+        <section id="waitlist-form-section" class="waitlist-section" style="display: none;">
             <div class="container">
                 <div class="waitlist-form-container glass-panel">
                     <div style="text-align:center;">
-                        <span class="badge">Limited Slots</span>
+                        <span class="badge">SPOT SECURED</span>
                     </div>
-                    <h2>Join The Waitlist</h2>
-                    <p class="desc">Client Cascade is launching soon! Join the waitlist now for founder pricing!</p>
+                    <h2>You're In! Claim Your VIP Onboarding.</h2>
+                    <p class="desc">Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.</p>
                     
                     <form id="waitlist-main-form" class="signup-form">
                         <div>
                             <label for="main-name">Full Name</label>
                             <input type="text" id="main-name" class="input-field" placeholder="John Doe" required>
-                        </div>
-                        <div>
-                            <label for="main-email">Email Address</label>
-                            <input type="email" id="main-email" class="input-field" placeholder="john@example.com" required>
                         </div>
                         <div>
                             <label for="main-phone">Phone Number</label>
@@ -575,7 +615,7 @@
                         </div>
                         
                         <div class="form-full-width">
-                            <button type="submit" class="btn-primary waitlist-submit-btn">Claim Founder Pricing & Access</button>
+                            <button type="submit" class="btn-primary waitlist-submit-btn">Claim VIP Setup</button>
                         </div>
                     </form>
                 </div>
