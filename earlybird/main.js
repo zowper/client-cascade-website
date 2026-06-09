@@ -358,9 +358,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const leakedRevenue = followUpLostBids * jobPrice;
         if (outputLeakedRev) outputLeakedRev.textContent = formatCurrency(leakedRevenue) + ' / mo';
 
-        // 4. Monthly and Annual Recovery (assuming Cascade helps recover at least +15% close rate overall)
+        // 4. Monthly and Annual Recovery (assuming Cascade helps recover at least 15% relative bump in close rate)
         const closeRateBump = 0.15;
-        const monthlyRecovered = jobPrice * bids * closeRateBump;
+        const monthlyRecovered = jobPrice * bids * (closeRate * closeRateBump);
         const annualRecovered = monthlyRecovered * 12;
 
         if (outputMonthlyRecovered) outputMonthlyRecovered.textContent = '+' + formatCurrency(monthlyRecovered);
