@@ -177,6 +177,33 @@ document.addEventListener('DOMContentLoaded', () => {
                         modalOverlay.classList.add('active');
                     }
                     
+                    // Transition Hero Step 2 to Step 3 Success
+                    if (heroStep2) {
+                        heroStep2.style.opacity = '0';
+                        setTimeout(() => {
+                            heroStep2.style.display = 'none';
+                            const heroStep3 = document.getElementById('hero-step-3');
+                            if (heroStep3) {
+                                heroStep3.style.display = 'block';
+                                heroStep3.offsetHeight; // Reflow
+                                heroStep3.style.opacity = '1';
+                            }
+                        }, 400);
+                    }
+
+                    // Transition Bottom Waitlist Form to Success
+                    const waitlistFormWrapper = document.getElementById('waitlist-form-wrapper');
+                    const waitlistSuccessView = document.getElementById('waitlist-success-view');
+                    if (waitlistFormWrapper && waitlistSuccessView) {
+                        waitlistFormWrapper.style.opacity = '0';
+                        setTimeout(() => {
+                            waitlistFormWrapper.style.display = 'none';
+                            waitlistSuccessView.style.display = 'block';
+                            waitlistSuccessView.offsetHeight; // Reflow
+                            waitlistSuccessView.style.opacity = '1';
+                        }, 400);
+                    }
+
                     // Reset all forms
                     if (heroVipForm) heroVipForm.reset();
                     if (mainForm) mainForm.reset();
@@ -237,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Shake error animation helper
     function shakeElement(element) {
+        if (!element) return;
         element.style.transform = 'translateX(0px)';
         const start = Date.now();
         const duration = 300;

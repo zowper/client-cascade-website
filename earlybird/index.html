@@ -9,6 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
     
@@ -106,6 +107,15 @@
                                         <button type="submit" class="btn-primary" style="width: 100%; padding: 0.95rem; font-size: 1.1rem;">Claim VIP Setup</button>
                                     </div>
                                 </form>
+                            </div>
+                            
+                            <!-- STEP 3 VIEW (SUCCESS) -->
+                            <div id="hero-step-3" class="step-container" style="display: none; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 0.5rem 0;">
+                                <div class="success-icon-container" style="margin-bottom: 1rem; width: 64px; height: 64px; font-size: 2rem; margin-top: 0.5rem;">✓</div>
+                                <h3 style="font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-heading);">VIP Spot Secured!</h3>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.5rem;">
+                                    We've saved your details. You're officially in line for priority onboarding and founder pricing!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -581,43 +591,52 @@
         <section id="waitlist-form-section" class="waitlist-section" style="display: none;">
             <div class="container">
                 <div class="waitlist-form-container">
-                    <div style="text-align:center;">
-                        <span class="badge">SPOT SECURED</span>
-                    </div>
-                    <h2>You're In! Claim Your VIP Onboarding.</h2>
-                    <p class="desc">Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.</p>
-                    
-                    <form id="waitlist-main-form" class="signup-form">
-                        <div>
-                            <label for="main-name">Full Name</label>
-                            <input type="text" id="main-name" class="input-field" placeholder="John Doe" required>
+                    <div id="waitlist-form-wrapper" style="transition: opacity 0.4s ease;">
+                        <div style="text-align:center;">
+                            <span class="badge">SPOT SECURED</span>
                         </div>
-                        <div>
-                            <label for="main-phone">Phone Number</label>
-                            <input type="tel" id="main-phone" class="input-field" placeholder="(555) 555-5555" required>
-                        </div>
-                        <div>
-                            <label for="main-company">Company Name</label>
-                            <input type="text" id="main-company" class="input-field" placeholder="Doe Contracting" required>
-                        </div>
-                        <div class="form-full-width">
-                            <label for="main-trade">Primary Trade</label>
-                            <select id="main-trade" class="input-field" required>
-                                <option value="" disabled selected>Select your trade...</option>
-                                <option value="roofing">Roofing & Siding</option>
-                                <option value="gutters">Gutters & Downspouts</option>
-                                <option value="hvac">HVAC & Plumbing</option>
-                                <option value="landscaping">Landscaping & Masonry</option>
-                                <option value="painting">Painting & Decorating</option>
-                                <option value="general">General Contracting</option>
-                                <option value="other">Other Trade / Specialty</option>
-                            </select>
-                        </div>
+                        <h2>You're In! Claim Your VIP Onboarding.</h2>
+                        <p class="desc">Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.</p>
                         
-                        <div class="form-full-width">
-                            <button type="submit" class="btn-primary waitlist-submit-btn">Claim VIP Setup</button>
-                        </div>
-                    </form>
+                        <form id="waitlist-main-form" class="signup-form">
+                            <div>
+                                <label for="main-name">Full Name</label>
+                                <input type="text" id="main-name" class="input-field" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="main-phone">Phone Number</label>
+                                <input type="tel" id="main-phone" class="input-field" placeholder="(555) 555-5555" required>
+                            </div>
+                            <div>
+                                <label for="main-company">Company Name</label>
+                                <input type="text" id="main-company" class="input-field" placeholder="Doe Contracting" required>
+                            </div>
+                            <div class="form-full-width">
+                                <label for="main-trade">Primary Trade</label>
+                                <select id="main-trade" class="input-field" required>
+                                    <option value="" disabled selected>Select your trade...</option>
+                                    <option value="roofing">Roofing & Siding</option>
+                                    <option value="gutters">Gutters & Downspouts</option>
+                                    <option value="hvac">HVAC & Plumbing</option>
+                                    <option value="landscaping">Landscaping & Masonry</option>
+                                    <option value="painting">Painting & Decorating</option>
+                                    <option value="general">General Contracting</option>
+                                    <option value="other">Other Trade / Specialty</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-full-width">
+                                <button type="submit" class="btn-primary waitlist-submit-btn">Claim VIP Setup</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SUCCESS VIEW -->
+                    <div id="waitlist-success-view" style="display: none; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 1rem 0;">
+                        <div class="success-icon-container" style="margin-bottom: 1.5rem; width: 72px; height: 72px; font-size: 2.25rem;">✓</div>
+                        <h2 style="margin-bottom: 0.75rem;">VIP Spot Secured!</h2>
+                        <p class="desc" style="margin-bottom: 0;">We've locked in your founder pricing and VIP setup. We will reach out as soon as early access slots open up.</p>
+                    </div>
                 </div>
             </div>
         </section>

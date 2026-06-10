@@ -4,8 +4,6 @@
    Linear High-Converting Layout
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 /* --- CUSTOM VARIABLES & DESIGN TOKENS --- */
 :root {
     /* Color Palette - Premium light theme for contractors */
@@ -1692,6 +1690,21 @@ p {
 }
 
 .roi-slider-input::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.roi-slider-input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+
+.roi-slider-input::-moz-range-thumb:hover {
     transform: scale(1.15);
 }
 
