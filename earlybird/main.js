@@ -10,6 +10,17 @@ const LEAD_CAPTURE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyipPR2Am
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Support URL parameter ?reset=true or ?clear=true for easy testing / resetting state
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('reset') || urlParams.has('clear')) {
+        localStorage.removeItem('earlybird_email');
+        localStorage.removeItem('earlybird_vip_details');
+        localStorage.removeItem('cc_earlybird_progress');
+        localStorage.removeItem('cc_earlybird_session_id');
+        window.location.href = window.location.pathname;
+        return;
+    }
+    
     // --- 1. SMOOTH SCROLL ROUTING & FLOATING CTA ---
     const floatingCta = document.getElementById('floating-cta');
     const heroSection = document.querySelector('.hero-section');
