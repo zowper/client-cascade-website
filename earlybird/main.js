@@ -4,6 +4,10 @@
    Linear High-Converting Layout
 */
 
+// --- CONFIGURATION ---
+// Set your Google Apps Script URL or Webhook endpoint here to enable real-time lead capture
+const LEAD_CAPTURE_ENDPOINT = '';
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. SMOOTH SCROLL ROUTING & FLOATING CTA ---
@@ -55,10 +59,171 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('success-modal-overlay');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
+    // --- LEAD CAPTURE SESSION & STATE ---
+    function getOrCreateSessionId() {
+        let sessionId = localStorage.getItem('cc_earlybird_session_id');
+        if (!sessionId) {
+            sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
+            localStorage.setItem('cc_earlybird_session_id', sessionId);
+        }
+        return sessionId;
+    }
+    const sessionId = getOrCreateSessionId();
+
+    function getSavedProgress() {
+        try {
+            return JSON.parse(localStorage.getItem('cc_earlybird_progress')) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function saveProgress(key, value) {
+        const progress = getSavedProgress();
+        progress[key] = value;
+        localStorage.setItem('cc_earlybird_progress', JSON.stringify(progress));
+    }
+
+    // Selected matched input fields for syncing
+    const fields = {
+        email: [document.getElementById('hero-email'), document.getElementById('bottom-email')],
+        name: [document.getElementById('hero-name'), document.getElementById('main-name')],
+        phone: [document.getElementById('hero-phone'), document.getElementById('main-phone')],
+        company: [document.getElementById('hero-company'), document.getElementById('main-company')],
+        trade: [document.getElementById('hero-trade'), document.getElementById('main-trade')]
+    };
+
+    // Restore saved progress on load
+    const savedProgress = getSavedProgress();
+    Object.keys(fields).forEach(key => {
+        if (savedProgress[key]) {
+            fields[key].forEach(input => {
+                if (input) input.value = savedProgress[key];
+            });
+        }
+    });
+
+    // Auto-transition steps based on previous submission state
+    const heroStep3 = document.getElementById('hero-step-3');
+    const bottomStep1 = document.getElementById('bottom-step-1');
+    const bottomStep2 = document.getElementById('bottom-step-2');
+    const bottomStep3 = document.getElementById('bottom-step-3');
+
+    if (localStorage.getItem('earlybird_vip_details')) {
+        // Show Step 3 (Success) directly
+        if (heroStep1 && heroStep2 && heroStep3) {
+            heroStep1.style.display = 'none';
+            heroStep1.style.opacity = '0';
+            heroStep2.style.display = 'none';
+            heroStep2.style.opacity = '0';
+            heroStep3.style.display = 'block';
+            heroStep3.style.opacity = '1';
+        }
+        if (bottomStep1 && bottomStep2 && bottomStep3) {
+            bottomStep1.style.display = 'none';
+            bottomStep1.style.opacity = '0';
+            bottomStep2.style.display = 'none';
+            bottomStep2.style.opacity = '0';
+            bottomStep3.style.display = 'block';
+            bottomStep3.style.opacity = '1';
+        }
+    } else if (localStorage.getItem('earlybird_email') || savedProgress.email) {
+        // Show Step 2 directly
+        if (heroStep1 && heroStep2) {
+            heroStep1.style.display = 'none';
+            heroStep1.style.opacity = '0';
+            heroStep2.style.display = 'block';
+            heroStep2.style.opacity = '1';
+        }
+        if (bottomStep1 && bottomStep2) {
+            bottomStep1.style.display = 'none';
+            bottomStep1.style.opacity = '0';
+            bottomStep2.style.display = 'block';
+            bottomStep2.style.opacity = '1';
+        }
+    }
+
+    // Send data to endpoint
+    function sendLeadData(isSubmitted) {
+        if (!LEAD_CAPTURE_ENDPOINT) return; // Silent if not configured
+
+        const currentProgress = getSavedProgress();
+        
+        // Deduce status based on what has been filled and submitted
+        let status = 'partial';
+        if (localStorage.getItem('earlybird_vip_details') || (isSubmitted && (currentProgress.name || currentProgress.phone))) {
+            status = 'submitted';
+        } else if (localStorage.getItem('earlybird_email') || isSubmitted) {
+            status = 'step1_submitted';
+        }
+
+        const payload = {
+            sessionId: sessionId,
+            email: currentProgress.email || '',
+            name: currentProgress.name || '',
+            phone: currentProgress.phone || '',
+            company: currentProgress.company || '',
+            trade: currentProgress.trade || '',
+            status: status,
+            lastUpdated: new Date().toISOString(),
+            referrer: document.referrer || '',
+            userAgent: navigator.userAgent || ''
+        };
+
+        fetch(LEAD_CAPTURE_ENDPOINT, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            console.log('Lead capture sync status:', response.status);
+        })
+        .catch(err => {
+            console.error('Lead capture sync error:', err);
+        });
+    }
+
+    // Debounce lead capture
+    let syncTimeout = null;
+    function triggerRemoteSync() {
+        if (syncTimeout) clearTimeout(syncTimeout);
+        syncTimeout = setTimeout(() => {
+            sendLeadData(false);
+        }, 1500);
+    }
+
+    // Synchronize inputs & trigger autosave/remote sync
+    Object.keys(fields).forEach(key => {
+        fields[key].forEach(input => {
+            if (!input) return;
+            const eventType = input.tagName === 'SELECT' ? 'change' : 'input';
+            input.addEventListener(eventType, (e) => {
+                const val = e.target.value;
+                // Update matched inputs
+                fields[key].forEach(otherInput => {
+                    if (otherInput && otherInput !== input) {
+                        otherInput.value = val;
+                    }
+                });
+                // Save progress locally
+                saveProgress(key, val);
+                // Trigger debounced remote sync
+                triggerRemoteSync();
+            });
+        });
+    });
+
     // Transitions both CTAs to Step 2
     function transitionBothToStep2(email) {
         localStorage.setItem('earlybird_email', email);
+        saveProgress('email', email);
         console.log('Spot secured immediately for:', email);
+
+        // Immediately sync to remote endpoint
+        sendLeadData(true);
 
         // Pre-fill email inputs (just in case they need it)
         const heroEmailInput = document.getElementById('hero-email');
@@ -226,6 +391,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('VIP onboarding details submitted:', vipData);
                     localStorage.setItem('earlybird_vip_details', JSON.stringify(vipData));
 
+                    // Save to progress state as well
+                    saveProgress('email', email);
+                    saveProgress('name', vipData.name);
+                    saveProgress('phone', vipData.phone);
+                    saveProgress('company', vipData.company);
+                    saveProgress('trade', vipData.trade);
+
+                    // Send final submission immediately
+                    sendLeadData(true);
+
                     // Show success modal
                     if (modalOverlay) {
                         modalOverlay.classList.add('active');
@@ -261,6 +436,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Reset all forms
                     if (heroVipForm) heroVipForm.reset();
                     if (mainForm) mainForm.reset();
+
+                    // Also clear local progress so a new session can start fresh if needed
+                    localStorage.removeItem('cc_earlybird_progress');
                     
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
