@@ -8,6 +8,7 @@
 
 - **Always Verify Changes:** Before declaring any task complete, you must verify that the changes function correctly and look visually correct.
 - **Immediate Push to Main:** Once changes are verified as good, you must immediately stage, commit, and push the changes to the GitHub `main` branch. **Do not ask the user for permission to push to main.**
+- **SSH remote for push:** If the repository defaults to HTTPS remote and throws credential prompt issues during push, update the remote URL to SSH (`git@github.com:zowper/client-cascade-website.git`) to utilize the authenticated key.
 
 ---
 
