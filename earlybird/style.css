@@ -1649,6 +1649,13 @@ p {
     background: #ffffff;
 }
 
+.roi-sliders-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
 .roi-slider-group {
     margin-bottom: 2rem;
 }
