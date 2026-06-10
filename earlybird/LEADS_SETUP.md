@@ -21,18 +21,10 @@ Follow these simple steps to set it up:
  * Receives partial and completed waitlist form entries and saves them.
  */
 function doPost(e) {
-  // Setup headers for CORS support
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
-
   try {
     if (!e || !e.postData || !e.postData.contents) {
       return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "No data received" }))
-                           .setMimeType(ContentService.MimeType.JSON)
-                           .setHeaders(headers);
+                           .setMimeType(ContentService.MimeType.JSON);
     }
 
     var data = JSON.parse(e.postData.contents);
@@ -83,26 +75,11 @@ function doPost(e) {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ status: "success", rowUpdated: foundRowIndex !== -1 }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeaders(headers);
+                         .setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeaders(headers);
+                         .setMimeType(ContentService.MimeType.JSON);
   }
-}
-
-// Handle preflight OPTIONS requests from the browser
-function doOptions(e) {
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Max-Age": "86400"
-  };
-  return ContentService.createTextOutput("")
-                       .setMimeType(ContentService.MimeType.TEXT)
-                       .setHeaders(headers);
 }
 ```
 

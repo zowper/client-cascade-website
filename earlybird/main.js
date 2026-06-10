@@ -172,14 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch(LEAD_CAPTURE_ENDPOINT, {
             method: 'POST',
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/plain'
             },
             body: JSON.stringify(payload)
         })
-        .then(response => {
-            console.log('Lead capture sync status:', response.status);
+        .then(() => {
+            console.log('Lead capture sync request sent.');
         })
         .catch(err => {
             console.error('Lead capture sync error:', err);
