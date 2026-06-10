@@ -401,11 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 start: 'top 75%'
             },
             opacity: 0,
-            scale: 0.95,
-            y: 40,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'back.out(1.2)'
+            y: 20,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: 'power2.out',
+            clearProps: 'all'
         });
 
         // Bottom Form Box reveal

@@ -949,22 +949,21 @@ p {
 .bonuses-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto auto auto;
     gap: 2rem;
 }
 
 .bonus-card {
-    grid-row: span 4;
-    display: grid;
-    grid-template-rows: subgrid;
     position: relative;
     padding: 3rem 2rem 2.5rem 2rem;
     overflow: hidden;
-    align-items: start;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    border-color: rgba(234, 179, 8, 0.2);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
     background: #ffffff;
+    height: 100%;
 }
 
 .bonus-card:hover {
@@ -1009,6 +1008,7 @@ p {
     font-size: 1.05rem; /* Larger copy size */
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .bonus-value {
