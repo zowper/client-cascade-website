@@ -588,15 +588,39 @@
         </section>
 
         <!-- BOTTOM WAITLIST SECTION -->
-        <section id="waitlist-form-section" class="waitlist-section" style="display: none;">
+        <section id="waitlist-form-section" class="waitlist-section">
             <div class="container">
                 <div class="waitlist-form-container">
-                    <div id="waitlist-form-wrapper" style="transition: opacity 0.4s ease;">
+                    
+                    <!-- BOTTOM STEP 1 -->
+                    <div id="bottom-step-1" class="step-container" style="transition: opacity 0.4s ease; opacity: 1;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">Secure Your Founder Pricing</h2>
+                        <p class="desc" style="text-align: center; margin-bottom: 2rem; font-size: 1.15rem;">Enter your email to claim your spot and get exclusive early access.</p>
+                        
+                        <form id="bottom-earlybird-form" class="hero-inline-form" style="max-width: 500px; margin: 0 auto 1.5rem auto;">
+                            <input type="email" id="bottom-email" class="input-field" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn-primary" style="width: 100%;">Secure Founder Pricing</button>
+                        </form>
+                        
+                        <div class="hero-form-note" style="justify-content: center; margin-bottom: 0.5rem;">
+                            <span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Full Setup Included!
+                            </span>
+                            <span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                100% Secured
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- BOTTOM STEP 2 (VIP UPSELL) -->
+                    <div id="bottom-step-2" class="step-container" style="display: none; opacity: 0; transition: opacity 0.4s ease;">
                         <div style="text-align:center;">
                             <span class="badge">SPOT SECURED</span>
                         </div>
-                        <h2>You're In! Claim Your VIP Onboarding.</h2>
-                        <p class="desc">Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.</p>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">You're In! Claim Your VIP Onboarding.</h2>
+                        <p class="desc" style="text-align: center; margin-bottom: 2rem; font-size: 1.15rem;">Your founder pricing is locked in. Tell us a bit more about your business to get priority onboarding and a custom workflow setup when we launch.</p>
                         
                         <form id="waitlist-main-form" class="signup-form">
                             <div>
@@ -631,12 +655,13 @@
                         </form>
                     </div>
 
-                    <!-- SUCCESS VIEW -->
-                    <div id="waitlist-success-view" style="display: none; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 1rem 0;">
+                    <!-- BOTTOM STEP 3 (SUCCESS) -->
+                    <div id="bottom-step-3" class="step-container" style="display: none; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 1rem 0;">
                         <div class="success-icon-container" style="margin-bottom: 1.5rem; width: 72px; height: 72px; font-size: 2.25rem;">✓</div>
                         <h2 style="margin-bottom: 0.75rem;">VIP Spot Secured!</h2>
                         <p class="desc" style="margin-bottom: 0;">We've locked in your founder pricing and VIP setup. We will reach out as soon as early access slots open up.</p>
                     </div>
+
                 </div>
             </div>
         </section>

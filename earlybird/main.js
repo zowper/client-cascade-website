@@ -49,12 +49,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroForm = document.getElementById('hero-earlybird-form');
     const heroVipForm = document.getElementById('hero-vip-form');
     const mainForm = document.getElementById('waitlist-main-form');
-    const bottomSection = document.getElementById('waitlist-form-section');
     const heroStep2 = document.getElementById('hero-step-2');
     
     // Modal Elements
     const modalOverlay = document.getElementById('success-modal-overlay');
     const closeModalBtn = document.getElementById('close-modal-btn');
+
+    // Transitions both CTAs to Step 2
+    function transitionBothToStep2(email) {
+        localStorage.setItem('earlybird_email', email);
+        console.log('Spot secured immediately for:', email);
+
+        // Pre-fill email inputs (just in case they need it)
+        const heroEmailInput = document.getElementById('hero-email');
+        const bottomEmailInput = document.getElementById('bottom-email');
+        if (heroEmailInput) heroEmailInput.value = email;
+        if (bottomEmailInput) bottomEmailInput.value = email;
+
+        // Transition Hero Step 1 to Step 2
+        if (heroStep1 && heroStep2) {
+            heroStep1.style.opacity = '0';
+            setTimeout(() => {
+                heroStep1.style.display = 'none';
+                heroStep2.style.display = 'block';
+                heroStep2.offsetHeight; // Reflow
+                heroStep2.style.opacity = '1';
+                
+                // Focus Name field in Hero form if that's the one they were interacting with
+                if (document.activeElement === heroEmailInput) {
+                    const heroName = document.getElementById('hero-name');
+                    if (heroName) heroName.focus();
+                }
+            }, 400);
+        }
+
+        // Transition Bottom Step 1 to Step 2
+        const bottomStep1 = document.getElementById('bottom-step-1');
+        const bottomStep2 = document.getElementById('bottom-step-2');
+        if (bottomStep1 && bottomStep2) {
+            bottomStep1.style.opacity = '0';
+            setTimeout(() => {
+                bottomStep1.style.display = 'none';
+                bottomStep2.style.display = 'block';
+                bottomStep2.offsetHeight; // Reflow
+                bottomStep2.style.opacity = '1';
+                
+                // Focus Name field in Bottom form if that's the one they were interacting with
+                if (document.activeElement === bottomEmailInput) {
+                    const mainName = document.getElementById('main-name');
+                    if (mainName) mainName.focus();
+                }
+            }, 400);
+        }
+
+        // Refresh GSAP ScrollTrigger trigger points
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+    }
 
     // Step 1: Hero Form (Email-only) Submission
     if (heroForm) {
@@ -72,42 +124,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '⚡ Securing Spot...';
 
-                // Simulate saving email address immediately to database
                 setTimeout(() => {
-                    console.log('Spot secured immediately for:', email);
-                    localStorage.setItem('earlybird_email', email);
-                    
-                    // Reset button
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
                     
-                    // Smooth transition to Step 2 (VIP Upsell)
-                    if (heroStep1 && heroStep2) {
-                        heroStep1.style.opacity = '0';
-                        setTimeout(() => {
-                            heroStep1.style.display = 'none';
-                            heroStep2.style.display = 'block';
-                            // Trigger layout paint reflow
-                            heroStep2.offsetHeight;
-                            heroStep2.style.opacity = '1';
-                            
-                            // Focus Name field
-                            const heroName = document.getElementById('hero-name');
-                            if (heroName) heroName.focus();
-                        }, 400);
-                    }
+                    // Transition both forms to Step 2
+                    transitionBothToStep2(email);
+                }, 1000);
+            } else {
+                // Shake & error highlight
+                emailInput.classList.add('error');
+                shakeElement(emailInput);
+            }
+        });
+    }
+
+    // Step 1: Bottom Form (Email-only) Submission
+    const bottomForm = document.getElementById('bottom-earlybird-form');
+    if (bottomForm) {
+        bottomForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('bottom-email');
+            const email = emailInput.value.trim();
+            const submitBtn = bottomForm.querySelector('button[type="submit"]');
+
+            if (validateEmail(email)) {
+                emailInput.classList.remove('error');
+                
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '⚡ Securing Spot...';
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
                     
-                    // Render/show bottom form section (Step 2 VIP Upsell)
-                    if (bottomSection) {
-                        bottomSection.style.display = 'block';
-                        bottomSection.offsetHeight; // Reflow
-                        bottomSection.style.opacity = '1';
-                        
-                        // Refresh GSAP ScrollTrigger trigger points if GSAP is loaded
-                        if (typeof ScrollTrigger !== 'undefined') {
-                            ScrollTrigger.refresh();
-                        }
-                    }
+                    // Transition both forms to Step 2
+                    transitionBothToStep2(email);
                 }, 1000);
             } else {
                 // Shake & error highlight
@@ -191,16 +245,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, 400);
                     }
 
-                    // Transition Bottom Waitlist Form to Success
-                    const waitlistFormWrapper = document.getElementById('waitlist-form-wrapper');
-                    const waitlistSuccessView = document.getElementById('waitlist-success-view');
-                    if (waitlistFormWrapper && waitlistSuccessView) {
-                        waitlistFormWrapper.style.opacity = '0';
+                    // Transition Bottom Step 2 to Step 3 Success
+                    const bottomStep2 = document.getElementById('bottom-step-2');
+                    const bottomStep3 = document.getElementById('bottom-step-3');
+                    if (bottomStep2 && bottomStep3) {
+                        bottomStep2.style.opacity = '0';
                         setTimeout(() => {
-                            waitlistFormWrapper.style.display = 'none';
-                            waitlistSuccessView.style.display = 'block';
-                            waitlistSuccessView.offsetHeight; // Reflow
-                            waitlistSuccessView.style.opacity = '1';
+                            bottomStep2.style.display = 'none';
+                            bottomStep3.style.display = 'block';
+                            bottomStep3.offsetHeight; // Reflow
+                            bottomStep3.style.opacity = '1';
                         }, 400);
                     }
 
