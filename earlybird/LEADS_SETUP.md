@@ -28,7 +28,8 @@ function doPost(e) {
     }
 
     var data = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    // Open the spreadsheet by ID explicitly and select the first sheet tab
+    var sheet = SpreadsheetApp.openById("1zOsohqL1tWpu8VFPN16gY3Y1YBZ6DuZupvGr0R7j1Rg").getSheets()[0];
     
     // Column definitions
     var columns = ["Session ID", "Email", "Name", "Phone", "Company", "Trade", "Status", "Last Updated", "Referrer"];
