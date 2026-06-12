@@ -1194,15 +1194,52 @@ p {
 
 /* --- FOOTER (QUARANTINED) --- */
 .quarantine-footer {
-    padding: 3rem 0;
+    padding: 4rem 0 3rem 0;
     text-align: center;
-    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
     background: #f1f5f9;
 }
 
 .quarantine-footer p {
-    font-size: 0.95rem; /* Legible footer text */
+    font-size: 0.95rem;
     color: var(--text-muted);
+}
+
+/* --- DISCLAIMERS CONTENT --- */
+.disclaimers-content {
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+    text-align: left;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    padding-bottom: 2rem;
+}
+
+.disclaimer-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.disclaimer-text {
+    font-size: 0.72rem !important; /* Elegant, small legal disclaimer text */
+    color: var(--text-muted) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0.85rem !important;
+}
+
+.disclaimer-text strong {
+    color: var(--text-secondary);
+}
+
+.quarantine-footer .copyright {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
 }
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
