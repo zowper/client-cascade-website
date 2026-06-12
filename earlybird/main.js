@@ -703,8 +703,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const monthlyRecovered = jobPrice * bidsPerMonth * (closeRate * closeRateBump);
         const annualRecovered = monthlyRecovered * 12;
 
-        if (outputMonthlyRecovered) outputMonthlyRecovered.innerHTML = '+' + formatCurrency(monthlyRecovered) + '<sup>**</sup>';
-        if (outputAnnualRecovered) outputAnnualRecovered.innerHTML = '+' + formatCurrency(annualRecovered) + '<sup>**</sup> / year';
+        if (outputMonthlyRecovered) outputMonthlyRecovered.textContent = '+' + formatCurrency(monthlyRecovered);
+        if (outputAnnualRecovered) outputAnnualRecovered.textContent = '+' + formatCurrency(annualRecovered) + ' / year';
     }
 
     if (sliderJobPrice && sliderBids && sliderCloseRate) {
