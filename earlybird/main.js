@@ -676,20 +676,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!sliderJobPrice || !sliderBids || !sliderCloseRate) return;
 
         const jobPrice = parseFloat(sliderJobPrice.value);
-        const bids = parseFloat(sliderBids.value);
+        const bidsPerDay = parseFloat(sliderBids.value);
+        const bidsPerMonth = bidsPerDay * 30;
         const closeRate = parseFloat(sliderCloseRate.value) / 100;
 
         // Update labels
         if (labelJobPrice) labelJobPrice.textContent = formatCurrency(jobPrice);
-        if (labelBids) labelBids.textContent = bids;
+        if (labelBids) labelBids.textContent = bidsPerDay;
         if (labelCloseRate) labelCloseRate.textContent = Math.round(closeRate * 100) + '%';
 
         // 1. Current Monthly Revenue
-        const currentRevenue = jobPrice * bids * closeRate;
+        const currentRevenue = jobPrice * bidsPerMonth * closeRate;
         if (outputCurrRev) outputCurrRev.textContent = formatCurrency(currentRevenue) + ' / mo';
 
         // 2. Estimated Bids Lost to poor follow-up (assuming 33% of lost bids are follow-up issues)
-        const lostBidsCount = bids * (1 - closeRate);
+        const lostBidsCount = bidsPerMonth * (1 - closeRate);
         const followUpLostBids = lostBidsCount * 0.33;
         if (outputLostBids) outputLostBids.textContent = followUpLostBids.toFixed(1) + ' / mo';
 
@@ -699,7 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Monthly and Annual Recovery (assuming Cascade helps recover at least 15% relative bump in close rate)
         const closeRateBump = 0.15;
-        const monthlyRecovered = jobPrice * bids * (closeRate * closeRateBump);
+        const monthlyRecovered = jobPrice * bidsPerMonth * (closeRate * closeRateBump);
         const annualRecovered = monthlyRecovered * 12;
 
         if (outputMonthlyRecovered) outputMonthlyRecovered.textContent = '+' + formatCurrency(monthlyRecovered) + '*';
