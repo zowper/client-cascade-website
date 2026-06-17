@@ -27,13 +27,9 @@ To route your leads from the landing page to GoHighLevel:
 1. Open the file [earlybird/main.js](file:///c:/Users/zowpe/Documents/GitHub/client-cascade-website/earlybird/main.js).
 2. Locate the `LEAD_CAPTURE_ENDPOINT` constant at the very top (Line 9):
    ```javascript
-   const LEAD_CAPTURE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyipPR2AmswWVSNNrBGOi6yHH1MKYHh8RKfKo8zrOh6jyP18N9gsg3QjvOJdV3v0LJsJQ/exec';
+   const LEAD_CAPTURE_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/HlaondNJjL3ylk6sc6pM/webhook-trigger/b1fef980-c2e1-49c4-af12-96f93f067e43';
    ```
-3. Replace the Google Sheets script URL with your copied **GoHighLevel Webhook URL**:
-   ```javascript
-   const LEAD_CAPTURE_ENDPOINT = 'YOUR_GOHIGHLEVEL_WEBHOOK_URL_HERE';
-   ```
-4. Save the file and deploy the changes to your production website.
+3. The codebase has already been updated with this URL and deployed.
 
 ---
 
