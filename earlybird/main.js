@@ -183,9 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch(LEAD_CAPTURE_ENDPOINT, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
-                'Content-Type': 'text/plain'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload)
         })
