@@ -6,7 +6,7 @@
 
 // --- CONFIGURATION ---
 // Set your Google Apps Script URL or Webhook endpoint here to enable real-time lead capture
-const LEAD_CAPTURE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyipPR2AmswWVSNNrBGOi6yHH1MKYHh8RKfKo8zrOh6jyP18N9gsg3QjvOJdV3v0LJsJQ/exec';
+const LEAD_CAPTURE_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/HlaondNJjL3ylk6sc6pM/webhook-trigger/b1fef980-c2e1-49c4-af12-96f93f067e43';
 
 document.addEventListener('DOMContentLoaded', () => {
     
