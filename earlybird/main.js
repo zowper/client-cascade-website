@@ -160,6 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentProgress = getSavedProgress();
         
+        // GoHighLevel requires a valid email. Do not sync incomplete/invalid emails.
+        if (!currentProgress.email || !validateEmail(currentProgress.email.trim())) {
+            console.log('Lead capture sync skipped: Email is missing or invalid.');
+            return;
+        }
+        
         // Deduce status based on what has been filled and submitted
         let status = 'partial';
         if (localStorage.getItem('earlybird_vip_details') || (isSubmitted && (currentProgress.name || currentProgress.phone))) {
