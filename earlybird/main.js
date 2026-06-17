@@ -202,16 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Debounce lead capture
-    let syncTimeout = null;
-    function triggerRemoteSync() {
-        if (syncTimeout) clearTimeout(syncTimeout);
-        syncTimeout = setTimeout(() => {
-            sendLeadData(false);
-        }, 1500);
-    }
-
-    // Synchronize inputs & trigger autosave/remote sync
+    // Synchronize inputs and save local progress (no autosave/remote sync on typing)
     Object.keys(fields).forEach(key => {
         fields[key].forEach(input => {
             if (!input) return;
@@ -224,10 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         otherInput.value = val;
                     }
                 });
-                // Save progress locally
+                // Save progress locally (in case of page refresh)
                 saveProgress(key, val);
-                // Trigger debounced remote sync
-                triggerRemoteSync();
             });
         });
     });
