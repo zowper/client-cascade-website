@@ -666,11 +666,47 @@ document.addEventListener('DOMContentLoaded', () => {
         return '$' + Math.round(val).toLocaleString();
     }
 
+    function roundPrice(val) {
+        if (val < 50) {
+            return Math.round(val / 5) * 5;
+        } else if (val < 100) {
+            return Math.round(val / 10) * 10;
+        } else if (val < 500) {
+            return Math.round(val / 25) * 25;
+        } else if (val < 1000) {
+            return Math.round(val / 50) * 50;
+        } else if (val < 5000) {
+            return Math.round(val / 250) * 250;
+        } else if (val < 10000) {
+            return Math.round(val / 500) * 500;
+        } else {
+            return Math.round(val / 1000) * 1000;
+        }
+    }
+
+    function roundQuotes(val) {
+        if (val < 2.0) {
+            return Math.round(val * 10) / 10;
+        } else if (val < 10.0) {
+            return Math.round(val * 2) / 2;
+        } else {
+            return Math.round(val);
+        }
+    }
+
     function calculateROI() {
         if (!sliderJobPrice || !sliderBids || !sliderCloseRate) return;
 
-        const jobPrice = parseFloat(sliderJobPrice.value);
-        const bidsPerDay = parseFloat(sliderBids.value);
+        // Map logarithmic price ($10 to $50,000)
+        const pricePct = parseFloat(sliderJobPrice.value);
+        const rawJobPrice = 10 * Math.pow(5000, pricePct / 100);
+        const jobPrice = roundPrice(rawJobPrice);
+
+        // Map logarithmic bids/quotes per day (0.1 to 99)
+        const bidsPct = parseFloat(sliderBids.value);
+        const rawBidsPerDay = 0.1 * Math.pow(990, bidsPct / 100);
+        const bidsPerDay = roundQuotes(rawBidsPerDay);
+
         const bidsPerMonth = bidsPerDay * 30;
         const closeRate = parseFloat(sliderCloseRate.value) / 100;
 
