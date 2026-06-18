@@ -697,14 +697,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateROI() {
         if (!sliderJobPrice || !sliderBids || !sliderCloseRate) return;
 
-        // Map logarithmic price ($10 to $50,000)
+        // Map logarithmic price ($50 to $50,000)
         const pricePct = parseFloat(sliderJobPrice.value);
-        const rawJobPrice = 10 * Math.pow(5000, pricePct / 100);
+        const rawJobPrice = 50 * Math.pow(1000, pricePct / 100);
         const jobPrice = roundPrice(rawJobPrice);
 
-        // Map logarithmic bids/quotes per day (0.1 to 99)
+        // Map logarithmic bids/quotes per day (0.5 to 99)
         const bidsPct = parseFloat(sliderBids.value);
-        const rawBidsPerDay = 0.1 * Math.pow(990, bidsPct / 100);
+        const rawBidsPerDay = 0.5 * Math.pow(198, bidsPct / 100);
         const bidsPerDay = roundQuotes(rawBidsPerDay);
 
         const bidsPerMonth = bidsPerDay * 30;
