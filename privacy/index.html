@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Cascade | Privacy Policy</title>
     <meta name="description" content="Read the Client Cascade Privacy Policy. Learn how we collect, process, and safeguard your data, and discover our strict SMS carrier and Twilio marketing compliance details.">
-    <link rel="icon" type="image/png" href="/images/favicons/CascadeIcon32x32.png">
+    <link rel="icon" type="image/png" href="../images/favicons/CascadeIcon32x32.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="/css/legal.css">
+    <link rel="stylesheet" href="../css/legal.css">
 </head>
 <body class="legal-page">
 
@@ -21,10 +21,10 @@
     <header class="legal-navbar">
         <div class="legal-navbar-container">
             <div class="legal-logo">
-                <a href="/earlybird"><img src="/images/design/CascadeWideSmall.png" alt="Client Cascade Logo"></a>
+                <a href="../earlybird/"><img src="../images/design/CascadeWideSmall.png" alt="Client Cascade Logo"></a>
             </div>
             <div class="legal-nav-actions">
-                <a href="/earlybird" class="btn-back">
+                <a href="../earlybird/" class="btn-back">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 2px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                     Back to Waitlist
                 </a>
@@ -165,8 +165,19 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="legal-footer">
+        <div class="legal-footer-container">
+            <p class="legal-footer-copyright">&copy; 2026 Client Cascade. All Rights Reserved.</p>
+            <div class="legal-footer-links">
+                <a href="../privacy/">Privacy Policy</a>
+                <a href="../terms/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Include central legal text configuration -->
-    <script src="/js/legal-content.js"></script>
+    <script src="../js/legal-content.js"></script>
     
     <!-- Define Page Default Policy -->
     <script>const DEFAULT_POLICY = 'privacy';</script>
@@ -196,9 +207,17 @@
             
             const data = policyKey === 'privacy' ? LEGAL_CONTENT.privacyPolicy : LEGAL_CONTENT.termsOfService;
             
-            const targetPath = policyKey === 'privacy' ? '/privacy/' : '/terms/';
+            // Dynamic subpath SPA routing
+            let targetPath = policyKey === 'privacy' ? '/privacy/' : '/terms/';
+            const currentPath = window.location.pathname;
             try {
-                if (window.location.pathname !== targetPath && window.location.protocol.startsWith('http')) {
+                if (currentPath.includes('/privacy/')) {
+                    targetPath = policyKey === 'privacy' ? currentPath : currentPath.replace('/privacy/', '/terms/');
+                } else if (currentPath.includes('/terms/')) {
+                    targetPath = policyKey === 'terms' ? currentPath : currentPath.replace('/terms/', '/privacy/');
+                }
+                
+                if (currentPath !== targetPath && window.location.protocol.startsWith('http')) {
                     history.pushState({ policy: policyKey }, '', targetPath);
                 }
             } catch (e) {
@@ -262,7 +281,6 @@
                     const targetId = link.getAttribute('href');
                     const targetSec = document.querySelector(targetId);
                     if (targetSec) {
-                        // Smooth scroll with header offset
                         const offset = 100; 
                         const bodyRect = document.body.getBoundingClientRect().top;
                         const elementRect = targetSec.getBoundingClientRect().top;
@@ -285,13 +303,20 @@
             const sections = document.querySelectorAll('.legal-section');
             const tocItems = document.querySelectorAll('.legal-toc-item');
             let currentSectionId = '';
-            const scrollPos = window.scrollY + window.innerHeight * 0.3;
             
-            sections.forEach(sec => {
-                if (scrollPos >= sec.offsetTop) {
-                    currentSectionId = sec.getAttribute('id');
-                }
-            });
+            // Check if user is scrolled to the very bottom of the page
+            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+            
+            if (atBottom && sections.length > 0) {
+                currentSectionId = sections[sections.length - 1].getAttribute('id');
+            } else {
+                const scrollPos = window.scrollY + window.innerHeight * 0.3;
+                sections.forEach(sec => {
+                    if (scrollPos >= sec.offsetTop) {
+                        currentSectionId = sec.getAttribute('id');
+                    }
+                });
+            }
             
             if (currentSectionId) {
                 tocItems.forEach(item => {

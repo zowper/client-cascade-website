@@ -1,4 +1,8 @@
 /* Clean, Light Theme CSS for Client Cascade Legal Center */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --bg-dark: #ffffff;
     --bg-darker: #f9fafb; /* Matches main website body background */
@@ -407,6 +411,8 @@ body.legal-page {
     }
     .legal-search-box {
         max-width: 100%;
+        min-width: unset;
+        width: 100%;
     }
     .legal-toc-list {
         grid-template-columns: 1fr;
@@ -417,6 +423,46 @@ body.legal-page {
     .legal-title {
         font-size: 1.5rem;
     }
+}
+
+/* Legal Page Footer */
+.legal-footer {
+    background-color: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 2rem 0;
+    margin-top: 5rem;
+    text-align: center;
+    width: 100%;
+}
+.legal-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.legal-footer-copyright {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+.legal-footer-links {
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
+.legal-footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.legal-footer-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 /* Print Styling */
@@ -432,6 +478,7 @@ body.legal-page {
     .legal-toc-wrapper,
     .btn-print,
     .legal-nav-actions,
+    .legal-footer,
     .legal-meta .btn-print {
         display: none !important;
     }
