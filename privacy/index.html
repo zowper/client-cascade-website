@@ -10,38 +10,33 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="/css/legal.css">
 </head>
 <body class="legal-page">
 
-    <!-- Decorative background glow and grid -->
-    <div class="bg-glow-container">
-        <div class="bg-glow-1"></div>
-        <div class="bg-glow-2"></div>
-        <div class="bg-grid"></div>
-    </div>
-
-    <!-- Main Wrapper -->
-    <div class="legal-container">
-        
-        <!-- Header Section -->
-        <header class="legal-header">
+    <!-- Header Navbar -->
+    <header class="legal-navbar">
+        <div class="legal-navbar-container">
             <div class="legal-logo">
                 <a href="/earlybird"><img src="/images/design/CascadeWideSmall.png" alt="Client Cascade Logo"></a>
             </div>
             <div class="legal-nav-actions">
                 <a href="/earlybird" class="btn-back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 2px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                     Back to Waitlist
                 </a>
-                <a href="http://my.clientcascade.com" class="btn-back" style="background:var(--primary); color:#fff; border-color:var(--primary);">
+                <a href="http://my.clientcascade.com" class="btn-login">
                     Login
                 </a>
             </div>
-        </header>
+        </div>
+    </header>
+
+    <!-- Main Wrapper -->
+    <div class="legal-container">
 
         <!-- Legal Center controls (Tabs & Search) -->
         <div class="legal-controls-wrapper">
@@ -194,7 +189,6 @@
         function renderPolicy(policyKey) {
             activePolicy = policyKey;
             
-            // If the JS legal configuration failed to load, fall back gracefully to pre-rendered HTML
             if (typeof LEGAL_CONTENT === 'undefined') {
                 console.error("LEGAL_CONTENT is not defined. Falling back to pre-rendered HTML.");
                 return;
@@ -202,7 +196,6 @@
             
             const data = policyKey === 'privacy' ? LEGAL_CONTENT.privacyPolicy : LEGAL_CONTENT.termsOfService;
             
-            // Seamless SPA URL navigation updating
             const targetPath = policyKey === 'privacy' ? '/privacy/' : '/terms/';
             try {
                 if (window.location.pathname !== targetPath && window.location.protocol.startsWith('http')) {
@@ -269,7 +262,17 @@
                     const targetId = link.getAttribute('href');
                     const targetSec = document.querySelector(targetId);
                     if (targetSec) {
-                        targetSec.scrollIntoView({ behavior: 'smooth' });
+                        // Smooth scroll with header offset
+                        const offset = 100; 
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = targetSec.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
@@ -388,7 +391,6 @@
             renderPolicy(policy);
         });
         
-        // Perform initial render (in case dynamic file has modified text)
         renderPolicy(activePolicy);
     });
     </script>
