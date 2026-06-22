@@ -166,6 +166,17 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="legal-footer">
+        <div class="legal-footer-container">
+            <p class="legal-footer-copyright">&copy; 2026 Client Cascade. All Rights Reserved.</p>
+            <div class="legal-footer-links">
+                <a href="../privacy/">Privacy Policy</a>
+                <a href="../terms/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Include central legal text configuration -->
     <script src="../js/legal-content.js"></script>
     
@@ -293,13 +304,20 @@
             const sections = document.querySelectorAll('.legal-section');
             const tocItems = document.querySelectorAll('.legal-toc-item');
             let currentSectionId = '';
-            const scrollPos = window.scrollY + window.innerHeight * 0.3;
             
-            sections.forEach(sec => {
-                if (scrollPos >= sec.offsetTop) {
-                    currentSectionId = sec.getAttribute('id');
-                }
-            });
+            // Check if user is scrolled to the very bottom of the page
+            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+            
+            if (atBottom && sections.length > 0) {
+                currentSectionId = sections[sections.length - 1].getAttribute('id');
+            } else {
+                const scrollPos = window.scrollY + window.innerHeight * 0.3;
+                sections.forEach(sec => {
+                    if (scrollPos >= sec.offsetTop) {
+                        currentSectionId = sec.getAttribute('id');
+                    }
+                });
+            }
             
             if (currentSectionId) {
                 tocItems.forEach(item => {
