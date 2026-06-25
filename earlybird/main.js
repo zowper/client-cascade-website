@@ -690,7 +690,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const outputCurrRev = document.getElementById('roi-curr-rev');
     const outputLostBids = document.getElementById('roi-lost-bids');
-    const outputLeakedRev = document.getElementById('roi-leaked-rev');
     const outputMonthlyRecovered = document.getElementById('roi-monthly-recovered');
     const outputAnnualRecovered = document.getElementById('roi-annual-recovered');
 
@@ -719,10 +718,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const lostBidsCount = bidsPerMonth * (1 - closeRate);
         const followUpLostBids = lostBidsCount * 0.33;
         if (outputLostBids) outputLostBids.textContent = followUpLostBids.toFixed(1) + ' / mo';
-
-        // 3. Leaked Monthly Revenue
-        const leakedRevenue = followUpLostBids * jobPrice;
-        if (outputLeakedRev) outputLeakedRev.textContent = formatCurrency(leakedRevenue) + ' / mo';
 
         // 4. Monthly and Annual Recovery (assuming Cascade helps recover at least 15% relative bump in close rate)
         const closeRateBump = 0.15;
