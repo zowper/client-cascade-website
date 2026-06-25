@@ -2251,4 +2251,21 @@ p {
     box-shadow: 0 10px 25px -5px rgba(15,23,42,0.08);
 }
 
+/* --- PERFORMANCE & ACCELERATION OPTIMIZATIONS (SAFARI/WEBKIT FIXES) --- */
+.bg-glow-1, .bg-glow-2, .bg-glow-3, .bg-glow-4 {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.why-container > *,
+.feature-content > *,
+.feature-visual,
+.bonus-card,
+.waitlist-form-container,
+.roi-calc-container > * {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+
 

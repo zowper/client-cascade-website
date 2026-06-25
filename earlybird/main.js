@@ -523,128 +523,160 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- 3. ANIMATION SCRIPTS (GSAP / CSS OBSERVATION) ---
-    // Check if GSAP is available
-    if (typeof gsap !== 'undefined') {
-        // Register ScrollTrigger if available
-        if (typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-        }
+    function initAnimations() {
+        // Check if GSAP is available
+        if (typeof gsap !== 'undefined') {
+            // Register ScrollTrigger if available
+            if (typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+            }
 
-        // Hero Content Animation
-        gsap.from('.hero-header > *, .hero-content > *', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power3.out'
-        });
+            // Hero Content Animation
+            gsap.fromTo('.hero-header > *, .hero-content > *', 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out', lazy: false, clearProps: 'opacity,transform' }
+            );
 
-        // Hero Visual Animation
-        gsap.from('.hero-visual', {
-            opacity: 0,
-            scale: 0.95,
-            x: 40,
-            duration: 1,
-            ease: 'power3.out',
-            delay: 0.3
-        });
+            // Hero Visual Animation
+            gsap.fromTo('.hero-visual', 
+                { opacity: 0, scale: 0.95, x: 40 },
+                { opacity: 1, scale: 1, x: 0, duration: 1, ease: 'power3.out', delay: 0.3, lazy: false, clearProps: 'opacity,transform' }
+            );
 
-        // Why Cascade section elements
-        gsap.from('.why-container > *', {
-            scrollTrigger: {
-                trigger: '.why-section',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out'
-        });
-
-        // Alternating Linear Feature rows
-        document.querySelectorAll('.feature-row').forEach(row => {
-            gsap.from(row.querySelectorAll('.feature-content > *, .feature-visual'), {
-                scrollTrigger: {
-                    trigger: row,
-                    start: 'top 75%'
-                },
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power2.out'
-            });
-        });
-
-        // Bonus cards reveal
-        gsap.from('.bonus-card', {
-            scrollTrigger: {
-                trigger: '.bonuses-section',
-                start: 'top 75%'
-            },
-            opacity: 0,
-            y: 20,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: 'power2.out',
-            clearProps: 'all'
-        });
-
-        // Bottom Form Box reveal
-        gsap.from('.waitlist-form-container', {
-            scrollTrigger: {
-                trigger: '.waitlist-section',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-
-        // ROI Calculator Animation
-        gsap.from('.roi-calc-container > *', {
-            scrollTrigger: {
-                trigger: '.roi-calculator-section',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out'
-        });
-
-
-
-    } else {
-        // Fallback standard IntersectionObserver (similar to main site)
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
-                    observer.unobserve(entry.target);
+            // Why Cascade section elements
+            gsap.fromTo('.why-container > *', 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    stagger: 0.15, 
+                    ease: 'power2.out', 
+                    lazy: false, 
+                    clearProps: 'opacity,transform',
+                    scrollTrigger: {
+                        trigger: '.why-section',
+                        start: 'top 85%'
+                    }
                 }
-            });
-        }, observerOptions);
+            );
 
-        // Apply transition styling dynamically for fallback
-        const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container', '.roi-calc-container'];
-        animatedClasses.forEach(selector => {
-            document.querySelectorAll(selector).forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(25px)';
-                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                observer.observe(el);
+            // Alternating Linear Feature rows
+            document.querySelectorAll('.feature-row').forEach(row => {
+                gsap.fromTo(row.querySelectorAll('.feature-content > *, .feature-visual'), 
+                    { opacity: 0, y: 40 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.8, 
+                        stagger: 0.15, 
+                        ease: 'power2.out', 
+                        lazy: false, 
+                        clearProps: 'opacity,transform',
+                        scrollTrigger: {
+                            trigger: row,
+                            start: 'top 80%'
+                        }
+                    }
+                );
             });
-        });
+
+            // Bonus cards reveal
+            gsap.fromTo('.bonus-card', 
+                { opacity: 0, y: 20 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.6, 
+                    stagger: 0.15, 
+                    ease: 'power2.out', 
+                    lazy: false, 
+                    clearProps: 'all',
+                    scrollTrigger: {
+                        trigger: '.bonuses-section',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            // Bottom Form Box reveal
+            gsap.fromTo('.waitlist-form-container', 
+                { opacity: 0, y: 40 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    ease: 'power3.out', 
+                    lazy: false, 
+                    clearProps: 'opacity,transform',
+                    scrollTrigger: {
+                        trigger: '.waitlist-section',
+                        start: 'top 85%'
+                    }
+                }
+            );
+
+            // ROI Calculator Animation
+            gsap.fromTo('.roi-calc-container > *', 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    stagger: 0.15, 
+                    ease: 'power2.out', 
+                    lazy: false, 
+                    clearProps: 'opacity,transform',
+                    scrollTrigger: {
+                        trigger: '.roi-calculator-section',
+                        start: 'top 85%'
+                    }
+                }
+            );
+
+            // Force refresh ScrollTrigger coordinates after setup
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 200);
+
+        } else {
+            // Fallback standard IntersectionObserver (similar to main site)
+            const observerOptions = {
+                threshold: 0.02, // Lowered from 0.15 to prevent stuck states on Safari/mobile
+                rootMargin: '0px 0px -40px 0px' // Pre-trigger slightly before entry
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Apply transition styling dynamically for fallback
+            const animatedClasses = ['.feature-row', '.bonus-card', '.waitlist-form-container', '.roi-calc-container'];
+            animatedClasses.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    // Set styles inside a requestAnimationFrame to prevent immediate transition start
+                    requestAnimationFrame(() => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(25px)';
+                        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                        observer.observe(el);
+                    });
+                });
+            });
+        }
+    }
+
+    // Stabilized initialization on window load to ensure layouts, images, and fonts are completed
+    if (document.readyState === 'complete') {
+        initAnimations();
+    } else {
+        window.addEventListener('load', initAnimations);
     }
 
     // --- 4. ROI CALCULATOR LOGIC ---
